@@ -11,13 +11,19 @@
 @import "screens/join.scss";
 
 body {
-    height: 200vh;
+    // height: 100vh;
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
         "Lucida Sans", Arial, sans-serif;
     background-color: #f4f3ea;
-    position: relative;
+    // position: relative;
     display: flex;
     justify-content: center;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
 }
 
 main {

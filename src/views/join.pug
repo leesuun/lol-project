@@ -1,31 +1,27 @@
 extends base/layout
-
-block content 
-    form(method="POST").join-form
-        .container
-            if errorMessage
-                h1="회원가입   " +errorMessage
-            else
-                h1 회원가입
-            p
-            label(for='user_id')
-                b 아이디
-            input(type='text' id='user_id' name="userid",minlength="6",  placeholder=''  )
-            label(for='psw')
-                b 비밀번호
-            input#pwd(type='password' name="password",pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$" , placeholder='비밀번호는 6자리 이상이여야 하며 영문과 숫자를 반드시 포함해야 합니다.' )
-            label(for='password2')
-                b 비밀번호 확인
-            input#pwd-repeat(type='password'  name='password2',minlength="6" ,placeholder='')
-            label(for='lol-nickname')
-                b 롤 닉네임
-            input#pwd-repeat(type='text' name='nickname' placeholder='' )
-            p
-                | By creating an account you agree to our
-                a(href='#') Terms & Privacy
-                | .
-            input.registerbtn(type="submit" value="가입하기")
-        .container.signin
-            p Already have an account? 
-                a(href='#') Sign in
-                | .
+block content
+    .join__wrapper
+        form(method="POST").join-form
+            .container
+                label(for='user_id')
+                    b 아이디
+                input(type='text' id='user_id' name="userid"   )
+                label(for='psw')
+                    b 비밀번호
+                input#pwd(type='password' name="password"  )
+                label(for='password2')
+                    b 비밀번호 확인
+                input#pwd-repeat(type='password'  name='password2')
+                label(for='lol-nickname')
+                    b 롤 닉네임
+                input#pwd-repeat(type='text' name='nickname' )
+                input.registerbtn(type="submit" value="가입하기")
+                .social__seletor
+                    a(href="#")
+                        span kakao
+                    a(href="#")
+                        span google
+            .container.signin
+                p Already have an account? 
+                    a(href='#') Sign in
+                    | .
