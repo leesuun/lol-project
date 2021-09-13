@@ -2,10 +2,12 @@ header {
     display: flex;
     position: fixed;
     width: 100%;
+    top: 0px;
     justify-content: center;
     align-items: center;
-    padding: 0px 20px;
+    padding: 10px 20px;
     background-color: #cad0d7;
+    // background: linear-gradient(0.25turn, #cad0d7, #333e51);
 
     nav {
         display: flex;
@@ -16,8 +18,8 @@ header {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             background-color: #333e51;
             color: white;
@@ -33,6 +35,13 @@ header {
         width: 50%;
         justify-content: center;
 
+        .main-logo {
+            font-family: "Lobster", cursive;
+            font-size: 2rem;
+            color: #cfb26a;
+            text-shadow: -1px 0 black, 0 1px black, 2px 0 black, 0 -2px black;
+        }
+
         form {
             display: flex;
             gap: 0px 10px;
@@ -42,26 +51,16 @@ header {
 
             input {
                 width: 50%;
-                height: 25px;
+                height: 35px;
+                border: none;
+                border-radius: 5px;
             }
         }
     }
-    .login__form {
+    .side__menu {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0px 10px;
         width: 20%;
-
-        padding: 5px;
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px 0px;
-            input {
-                width: 50%;
-            }
-        }
-        div {
-            display: flex;
-            justify-content: center;
-        }
     }
 }

@@ -1,5 +1,5 @@
 header
-    nav
+    nav.nav
         a(href="#") 
             span Home
         a(href="#") 
@@ -11,18 +11,15 @@ header
     div.contents
         form
             a(href="#")
-                span logoImg
-            input(type="text")
-            i.fas.fa-search.fa-lg
-            i.fas.fa-microphone.fa-lg
-
-    div.login__form
-        form
-            input(type="text")
-            input(type="text")
-            input(type="submit" value="Login")
-        div
-            a(href="#")
-                span 아이디/비밀번호 찾기
-            a(href="#")
-                span 회원가입
+                span.main-logo CFS.GG
+            input(type="text").form-control
+            button(type="submit").btn.btn-default
+                i.fas.fa-search.fa-lg
+            button(type="submit").btn.btn-default
+                i.fas.fa-microphone.fa-lg        
+    div.side__menu
+        i.fas.fa-cog.fa-lg
+        a(href="#")    
+            span 로그인
+        a(href="#") 
+            span 회원가입

@@ -4,9 +4,21 @@
 
 //components
 @import "components/header.scss";
+@import "components/footer.scss";
+
+//screens
+@import "screens/home.scss";
 
 body {
     height: 200vh;
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
         "Lucida Sans", Arial, sans-serif;
+    background-color: #f4f3ea;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    width: 60%;
 }
