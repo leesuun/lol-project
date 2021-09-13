@@ -1,0 +1,12 @@
+// configs
+@import "configs/variable";
+@import "configs/reset.scss";
+
+//components
+@import "components/header.scss";
+
+body {
+    height: 200vh;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+}
