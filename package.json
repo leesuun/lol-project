@@ -2,13 +2,21 @@
   "name": "lol-project",
   "version": "1.0.0",
   "description": "league of legend project",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon --exec babel-node src/app.js"
   },
   "keywords": [
     "search"
   ],
   "author": "suun lee",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/node": "^7.15.4",
+    "@babel/preset-env": "^7.15.6",
+    "nodemon": "^2.0.12"
+  }
 }
