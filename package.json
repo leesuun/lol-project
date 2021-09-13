@@ -1,0 +1,14 @@
+{
+  "name": "lol-project",
+  "version": "1.0.0",
+  "description": "league of legend project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "search"
+  ],
+  "author": "suun lee",
+  "license": "MIT"
+}
