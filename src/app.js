@@ -10,8 +10,10 @@ const PORT = 8080;
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 
-app.use("/assets", express.static("assets"));
+app.use(express.urlencoded({ extended: true }));
 app.use(logger);
+
+app.use("/assets", express.static("assets"));
 app.use("/", globalRouter);
 
 app.listen(PORT, () => {
