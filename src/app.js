@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 
+import apiRouter from "./routers/apiRouter";
 import globalRouter from "./routers/globalRouter";
 
 const logger = morgan("dev");
@@ -15,5 +16,6 @@ app.use(logger);
 
 app.use("/assets", express.static("assets"));
 app.use("/", globalRouter);
+app.use("/api", apiRouter);
 
 export default app;
