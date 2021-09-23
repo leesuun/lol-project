@@ -7,8 +7,24 @@ export const getJoin = (req, res) => {
 
 export const postJoin = async (req, res) => {
     const {
-        body: { userId, password, password2, nickname },
+        body: { userId, password, nickname, statusCheck },
     } = req;
+    console.log(userId);
+    console.log(statusCheck);
+    if (statusCheck === "ok") {
+        console.log(statusCheck);
+        try {
+            const user = await User.create({
+                userId,
+                password,
+                nickname,
+            });
+            console.log(user);
+        } catch (error) {
+            console.log(error);
+        }
+    } else {
+    }
 
     res.end();
 };

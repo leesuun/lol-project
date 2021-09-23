@@ -12,14 +12,13 @@ const ok = {
     password2: false,
 };
 
+let inputId = null;
+let inputPass = null;
+
 userId.focus();
 
 const handleIdBlur = async (event) => {
-    const inputId = userId.value;
-
-    if (inputId === "") {
-        console.log(inputId);
-    }
+    inputId = userId.value;
 
     const response = await fetch("/api/join", {
         method: "POST",
@@ -40,7 +39,7 @@ const handleIdBlur = async (event) => {
 };
 
 const handlePassBlur = async (event) => {
-    const inputPass = password.value;
+    inputPass = password.value;
 
     const response = await fetch("/api/join", {
         method: "POST",
@@ -61,7 +60,7 @@ const handlePassBlur = async (event) => {
 };
 
 const handlePass2Blur = async (evnet) => {
-    const inputPass = password.value;
+    inputPass = password.value;
     const inputPass2 = password2.value;
 
     const response = await fetch("/api/join", {
@@ -83,13 +82,22 @@ const handlePass2Blur = async (evnet) => {
     }
 };
 
-const handleSubmit = (event) => {
-    event.preventDefault();
-
+const handleSubmit = async (event) => {
     if (ok.id === false || ok.password === false || ok.password2 === false) {
-        console.log("false");
+        event.preventDefault();
+        alert("입력 정보를 확인해 주세요.");
     } else {
-        console.log("true");
+        await fetch("/join", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                statusCheck: "ok",
+                userId: inputId,
+                password: inputPass,
+            }),
+        });
     }
 };
 
