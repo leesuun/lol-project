@@ -2,20 +2,24 @@ extends base/layout
 block content
     .join__wrapper
         h1 회원가입
-        form(method="POST").join-form
+        form(method="POST").join-form#joinForm
             .container
-                label(for='user_id')
+                label(for='userId')
                     b 아이디
-                input(type='text' id='user_id' name="userId"   )
-                label(for='psw')
+                input(type='text' id='userId' name="userId"  require minLength=6 maxLength=15 )
+                span#stateId 
+                label(for='password')
                     b 비밀번호
-                input#pwd(type='password' name="password"  )
+                input#password(type='password' name="password" require   minLength=6 maxLength=20)
+                span#statePass
                 label(for='password2')
                     b 비밀번호 확인
-                input#pwd-repeat(type='password'  name='password2')
-                label(for='lol-nickname')
+                input#password2(type='password'  name='password2' require)
+                span#statePass2
+                label(for='nickname')
                     b 롤 닉네임
-                input#pwd-repeat(type='text' name='nickname' )
+                input#nickname(type='text' name='nickname' require )
+                span#stateNickname
                 input.registerbtn(type="submit" value="가입하기")
                 .social__seletor
                     a(href="#")
@@ -26,3 +30,6 @@ block content
                 p Already have an account? 
                     a(href='#') Sign in
                     | .
+
+block scripts
+    script(src="/assets/js/join.js") 
