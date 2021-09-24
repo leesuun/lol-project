@@ -1,5 +1,6 @@
-import User from "../../models/user";
-import regex from "../../regex";
+import fetch from "node-fetch";
+import User from "../../models/User.js";
+import regex from "../../regex.js";
 
 export const getJoin = (req, res) => {
     return res.render("join");
@@ -7,26 +8,25 @@ export const getJoin = (req, res) => {
 
 export const postJoin = async (req, res) => {
     const {
-        body: { userId, password, nickname, statusCheck },
+        body: { userId, password, accountData, statusCheck },
     } = req;
-    console.log(userId);
-    console.log(statusCheck);
-    if (statusCheck === "ok") {
-        console.log(statusCheck);
+
+    if (statusCheck) {
         try {
             const user = await User.create({
                 userId,
                 password,
-                nickname,
+                nickname: accountData.name,
+                userIcon: accountData.profileIconId,
+                summonerLevel: accountData.summonerLevel,
             });
             console.log(user);
         } catch (error) {
             console.log(error);
         }
-    } else {
     }
 
-    res.end();
+    return res.redirect("/");
 };
 
 export const inputState = async (req, res) => {
@@ -77,8 +77,36 @@ export const inputState = async (req, res) => {
             state.ok = true;
         }
     }
-
     res.send(state);
+};
+
+export const inputNickname = async (req, res) => {
+    const {
+        body: { nickname },
+    } = req;
+
+    const state = {
+        msg: null,
+        ok: false,
+    };
+
+    const ACCOUNT_URL = `summoner/v4/summoners/by-name/${nickname}?api_key=${process.env.API_KEY}`;
+    const accountData = await (
+        await fetch(`${process.env.LOL_BASE_URL}${ACCOUNT_URL}`)
+    ).json();
+
+    if (nickname) {
+        state.ok = false;
+        if (nickname === "!@#$") {
+            state.msg = "필수 입력 항목입니다.";
+        } else if (accountData.status) {
+            state.msg = "존재하지 않는 소환사 입니다.";
+        } else {
+            state.msg = "유효한 소환사명 입니다.";
+            state.ok = true;
+        }
+    }
+    res.send({ state, accountData });
 };
 
 // 공백 해결

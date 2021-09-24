@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "lol-project",
   "version": "1.0.0",
   "description": "league of legend project",
@@ -12,19 +13,23 @@
   "author": "suun lee",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongodb": "^4.1.2",
     "mongoose": "^6.0.6",
+    "node-fetch": "^3.0.0",
     "pug": "^3.0.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
     "@babel/node": "^7.15.4",
     "@babel/preset-env": "^7.15.6",
-    "css-loader": "^6.2.0",
+    "css-loader": "^6.3.0",
     "mini-css-extract-plugin": "^2.3.0",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.12",
+    "nodemon": "^2.0.13",
     "sass": "^1.39.2",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",

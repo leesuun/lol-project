@@ -1,8 +1,8 @@
 extends base/layout
 block content
-    .join__wrapper
+    .account__wrapper
         h1 회원가입
-        form(method="POST").join-form#joinForm
+        form(method="POST").account__form#joinForm
             .container
                 label(for='userId')
                     b 아이디
@@ -28,7 +28,7 @@ block content
                         span google
             .container.signin
                 p Already have an account? 
-                    a(href='#') Sign in
+                    a(href='/login') Sign in
                     | .
 
 block scripts

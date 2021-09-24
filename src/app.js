@@ -1,8 +1,8 @@
 import express from "express";
 import morgan from "morgan";
 
-import apiRouter from "./routers/apiRouter";
-import globalRouter from "./routers/globalRouter";
+import apiRouter from "./routers/apiRouter.js";
+import globalRouter from "./routers/globalRouter.js";
 
 const logger = morgan("dev");
 const app = express();

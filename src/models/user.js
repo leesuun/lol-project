@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-import regex from "../regex";
+import bcrypt from "bcrypt";
+import regex from "../regex.js";
 
 const userSchema = mongoose.Schema({
     userId: {
@@ -24,6 +25,17 @@ const userSchema = mongoose.Schema({
         },
     },
     nickname: { type: String, require: true, trim: true },
+    userIcon: { type: Number, require: true },
+    summonerLevel: { type: Number, require: true },
+});
+
+userSchema.pre("save", async function (next) {
+    const saltRounds = Math.floor(Math.random() * 10);
+
+    if (this.isModified("password")) {
+        this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+    next();
 });
 
 const User = mongoose.model("User", userSchema);

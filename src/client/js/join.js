@@ -5,15 +5,19 @@ const password = form.querySelector("#password");
 const statePass = form.querySelector("#statePass");
 const password2 = form.querySelector("#password2");
 const statePass2 = form.querySelector("#statePass2");
+const nickname = form.querySelector("#nickname");
 
 const ok = {
     id: false,
     password: false,
     password2: false,
+    nickname: false,
 };
 
 let inputId = null;
 let inputPass = null;
+let inputNickname = null;
+let accountData = null;
 
 userId.focus();
 
@@ -82,8 +86,34 @@ const handlePass2Blur = async (evnet) => {
     }
 };
 
+const handleNicknameBlur = async (event) => {
+    inputNickname = nickname.value;
+
+    const response = await fetch("/api/join/nickname", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            nickname: inputNickname !== "" ? inputNickname : "!@#$",
+        }),
+    });
+
+    if (response.status === 200) {
+        accountData = await response.json();
+        stateNickname.innerText = accountData.state.msg;
+        // console.log(accountData);
+        ok.nickname = accountData.state.ok;
+    }
+};
+
 const handleSubmit = async (event) => {
-    if (ok.id === false || ok.password === false || ok.password2 === false) {
+    if (
+        ok.id === false ||
+        ok.password === false ||
+        ok.password2 === false ||
+        ok.nickname === false
+    ) {
         event.preventDefault();
         alert("입력 정보를 확인해 주세요.");
     } else {
@@ -96,6 +126,7 @@ const handleSubmit = async (event) => {
                 statusCheck: "ok",
                 userId: inputId,
                 password: inputPass,
+                accountData: accountData.accountData,
             }),
         });
     }
@@ -104,4 +135,5 @@ const handleSubmit = async (event) => {
 userId.addEventListener("blur", handleIdBlur);
 password.addEventListener("blur", handlePassBlur);
 password2.addEventListener("blur", handlePass2Blur);
+nickname.addEventListener("blur", handleNicknameBlur);
 form.addEventListener("submit", handleSubmit);
