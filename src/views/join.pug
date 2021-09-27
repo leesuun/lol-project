@@ -7,19 +7,19 @@ block content
                 label(for='userId')
                     b 아이디
                 input(type='text' id='userId' name="userId"  require minLength=6 maxLength=15 )
-                span#stateId(style="color:red") 
+                p#stateId(style="color:red") 
                 label(for='password')
                     b 비밀번호
                 input#password(type='password' name="password" require   minLength=6 maxLength=20)
-                span#statePass(style="color:red")
+                p#statePass(style="color:red")
                 label(for='password2')
                     b 비밀번호 확인
                 input#password2(type='password'  name='password2' require)
-                span#statePass2(style="color:red")
+                p#statePass2(style="color:red")
                 label(for='nickname')
                     b 롤 닉네임
                 input#nickname(type='text' name='nickname' require )
-                span#stateNickname
+                p#stateNickname
                 input.registerbtn(type="submit" value="가입하기")
                 .social__seletor
                     a(href="#")

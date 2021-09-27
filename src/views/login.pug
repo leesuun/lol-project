@@ -10,6 +10,7 @@ block content
                 label(for='password')
                     b 비밀번호
                 input#password(type='password' name="password" require)
+                p#submitState
                 input.registerbtn(type="submit" value="로그인")
                 .social__seletor
                     a(href="#")
@@ -20,6 +21,9 @@ block content
                 p Don't have an account? 
                     a(href='/join') Create Now &rarr;
                     | 
+
+block scripts
+    script(async src="/assets/js/login.js") 
 
 
 

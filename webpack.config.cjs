@@ -5,6 +5,7 @@ module.exports = {
     entry: {
         main: "/src/client/js/main.js",
         join: "/src/client/js/join.js",
+        login: "/src/client/js/login.js",
     },
 
     output: {
