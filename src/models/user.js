@@ -25,8 +25,9 @@ const userSchema = mongoose.Schema({
         },
     },
     nickname: { type: String, require: true, trim: true },
-    userIcon: { type: Number, require: true },
-    summonerLevel: { type: Number, require: true },
+    summonerId: { type: String, require: true, trim: true },
+    accountId: { type: String, require: true, trim: true },
+    puuId: { type: String, require: true, trim: true },
 });
 
 userSchema.pre("save", async function (next) {

@@ -117,6 +117,7 @@ const handleSubmit = async (event) => {
         event.preventDefault();
         alert("입력 정보를 확인해 주세요.");
     } else {
+        console.log(accountData);
         await fetch("/join", {
             method: "POST",
             headers: {

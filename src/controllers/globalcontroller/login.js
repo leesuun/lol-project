@@ -1,5 +1,6 @@
 import User from "../../models/User.js";
 import bcrypt from "bcrypt";
+import fetch from "node-fetch";
 
 export const getLogin = (req, res) => {
     return res.render("login");
@@ -7,14 +8,22 @@ export const getLogin = (req, res) => {
 
 export const postLogin = async (req, res) => {
     const {
-        body: { ok, successId },
+        body: { successId, userId, ok },
     } = req;
+    console.log(req.body);
 
-    if (ok) {
-        const user = await User.findOne({ successId });
-        req.session.user = user;
-        req.session.loggedIn = true;
-    }
+    const user =
+        (await User.findOne({ userId })) === null
+            ? await User.findOne({ userId: successId })
+            : await User.findOne({ userId });
+
+    const ACCOUNT_URL = `summoner/v4/summoners/by-account/${user.accountId}?api_key=${process.env.API_KEY}`;
+    const userInfo = await (
+        await fetch(`${process.env.LOL_BASE_URL}${ACCOUNT_URL}`)
+    ).json();
+
+    req.session.loggedIn = true;
+    req.session.user = userInfo;
 
     return res.redirect("/");
 };
@@ -41,7 +50,8 @@ export const accountInfo = async (req, res) => {
             state.msg = "아이디 또는 비밀번호가 잘못 입력 되었습니다.";
         } else {
             state.ok = true;
-            (state.successId = userId), (state.successPass = password);
+            state.successId = userId;
+            state.successPass = password;
         }
     }
     res.send(state);

@@ -18,11 +18,14 @@ header
             button(type="submit").btn.btn-default
                 i.fas.fa-microphone.fa-lg        
     div.side__menu
-        i.fas.fa-cog.fa-lg
+        //- i.fas.fa-cog.fa-lg
         if loggedIn
-            //- span=loggedInUser.nickname
-            a(href="/user/logout")    
-                span 로그아웃
+            div.user__profile
+                img(src=`https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/${loggedInUser.profileIconId}.png`)
+                div.user__info
+                    span=loggedInUser.name
+                    span="Level: "+loggedInUser.summonerLevel
+                a(href="/user/logout")  로그아웃
         else
             a(href="/login")    
                 span 로그인

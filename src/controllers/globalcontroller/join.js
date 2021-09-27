@@ -13,12 +13,14 @@ export const postJoin = async (req, res) => {
 
     if (statusCheck) {
         try {
+            // console.log(accountData);
             const user = await User.create({
                 userId,
                 password,
-                nickname: accountData.name,
-                userIcon: accountData.profileIconId,
-                summonerLevel: accountData.summonerLevel,
+                summonerId: accountData.id,
+                accountId: accountData.accountId,
+                puuId: accountData.puuid,
+                nickname: "asd",
             });
             console.log(user);
         } catch (error) {
@@ -84,6 +86,7 @@ export const inputNickname = async (req, res) => {
     const {
         body: { nickname },
     } = req;
+    console.log(nickname);
 
     const state = {
         msg: null,
@@ -106,6 +109,7 @@ export const inputNickname = async (req, res) => {
             state.ok = true;
         }
     }
+    console.log("eeroeorwerjkwejrwejroiwejior");
     res.send({ state, accountData });
 };
 

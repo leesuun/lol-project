@@ -62,5 +62,31 @@ header {
         justify-content: flex-end;
         gap: 0px 10px;
         width: 20%;
+
+        .user__profile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .user__info {
+                display: flex;
+                gap: 3px;
+                flex-direction: column;
+            }
+            img {
+                width: 35px;
+                height: 35px;
+                margin-right: 5px;
+                border-radius: 50%;
+            }
+
+            span {
+                font-size: 0.8rem;
+            }
+
+            a {
+                margin-left: 1rem;
+            }
+        }
     }
 }
