@@ -7,28 +7,16 @@ export const getLogin = (req, res) => {
 
 export const postLogin = async (req, res) => {
     const {
-        body: { userId, password, state },
+        body: { ok, successId },
     } = req;
 
-    if (state) {
-        console.log(req.body);
-        return res.redirect("/");
+    if (ok) {
+        const user = await User.findOne({ successId });
+        req.session.user = user;
+        req.session.loggedIn = true;
     }
-    console.log(state);
 
-    // return res.redirect("/");
-    // console.log("controll");
-
-    // const {
-    //     body: { userId, password },
-    // } = req;
-    // console.log(req.body);
-    // const user = await User.findOne({ userId });
-    // if (!user) {
-    //     console.log("fail");
-    // }
-
-    // return res.redirect("/");
+    return res.redirect("/");
 };
 
 export const accountInfo = async (req, res) => {
@@ -38,22 +26,23 @@ export const accountInfo = async (req, res) => {
     const state = {
         msg: null,
         ok: false,
+        successId: null,
+        successPass: null,
     };
-    if (userId === "" || password === "") {
+    const user = await User.findOne({ userId });
+
+    if (userId === "!@#$" || password === "!@#$") {
         state.msg = "아이디 / 패스워드를 입력해주세요.";
+    } else if (!user) {
+        state.msg = "존재하지 않는 계정입니다.";
     } else {
-        const user = await User.findOne({ userId });
-        if (!user) {
-            state.msg = "존재하지 않는 계정입니다.";
+        const math = await bcrypt.compare(password, user.password);
+        if (!math) {
+            state.msg = "아이디 또는 비밀번호가 잘못 입력 되었습니다.";
         } else {
-            const math = await bcrypt.compare(password, user.password);
-            if (!math) {
-                state.msg = "아이디 또는 비밀번호가 잘못 입력 되었습니다.";
-            } else {
-                state.ok = true;
-            }
+            state.ok = true;
+            (state.successId = userId), (state.successPass = password);
         }
     }
-
     res.send(state);
 };

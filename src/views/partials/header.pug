@@ -19,7 +19,12 @@ header
                 i.fas.fa-microphone.fa-lg        
     div.side__menu
         i.fas.fa-cog.fa-lg
-        a(href="/login")    
-            span 로그인
-        a(href="/join") 
-            span 회원가입
+        if loggedIn
+            //- span=loggedInUser.nickname
+            a(href="/user/logout")    
+                span 로그아웃
+        else
+            a(href="/login")    
+                span 로그인
+            a(href="/join") 
+                span 회원가입

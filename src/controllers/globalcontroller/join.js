@@ -26,7 +26,7 @@ export const postJoin = async (req, res) => {
         }
     }
 
-    return res.redirect("/");
+    return res.redirect("/login");
 };
 
 export const inputState = async (req, res) => {
