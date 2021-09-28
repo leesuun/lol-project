@@ -13,7 +13,6 @@ export const postJoin = async (req, res) => {
 
     if (statusCheck) {
         try {
-            // console.log(accountData);
             const user = await User.create({
                 userId,
                 password,
@@ -86,8 +85,6 @@ export const inputNickname = async (req, res) => {
     const {
         body: { nickname },
     } = req;
-    console.log(nickname);
-
     const state = {
         msg: null,
         ok: false,
@@ -109,7 +106,7 @@ export const inputNickname = async (req, res) => {
             state.ok = true;
         }
     }
-    console.log("eeroeorwerjkwejrwejroiwejior");
+
     res.send({ state, accountData });
 };
 

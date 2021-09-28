@@ -10,12 +10,12 @@ export const postLogin = async (req, res) => {
     const {
         body: { successId, userId, ok },
     } = req;
-    console.log(req.body);
 
     const user =
         (await User.findOne({ userId })) === null
             ? await User.findOne({ userId: successId })
             : await User.findOne({ userId });
+    // console.log(user);
 
     const ACCOUNT_URL = `summoner/v4/summoners/by-account/${user.accountId}?api_key=${process.env.API_KEY}`;
     const userInfo = await (
