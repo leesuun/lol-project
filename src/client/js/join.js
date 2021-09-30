@@ -14,12 +14,23 @@ const ok = {
     nickname: false,
 };
 
-let inputId = null;
-let inputPass = null;
-let inputNickname = null;
-let accountData = null;
+let inputId = "";
+let inputPass = "";
+let inputNickname = "";
+let accountData = "";
 
 userId.focus();
+
+function inputError(state, element, stateMsg) {
+    if (!state) {
+        element.classList.add("red");
+        element.classList.remove("green");
+    } else {
+        element.classList.add("green");
+        element.classList.remove("red");
+    }
+    element.innerText = stateMsg;
+}
 
 const handleIdBlur = async (event) => {
     inputId = userId.value;
@@ -38,7 +49,7 @@ const handleIdBlur = async (event) => {
         const state = await response.json();
         console.log(state);
         ok.id = state.ok;
-        stateId.innerText = state.msg;
+        inputError(ok.id, stateId, state.msg);
     }
 };
 
@@ -57,9 +68,8 @@ const handlePassBlur = async (event) => {
 
     if (response.status === 200) {
         const state = await response.json();
-        statePass.innerText = state.msg;
-        console.log(state);
         ok.password = state.ok;
+        inputError(ok.password, statePass, state.msg);
     }
 };
 
@@ -80,9 +90,8 @@ const handlePass2Blur = async (evnet) => {
 
     if (response.status === 200) {
         const state = await response.json();
-        statePass2.innerText = state.msg;
-        console.log(state);
         ok.password2 = state.ok;
+        inputError(ok.password2, statePass2, state.msg);
     }
 };
 
@@ -101,9 +110,8 @@ const handleNicknameBlur = async (event) => {
 
     if (response.status === 200) {
         accountData = await response.json();
-        stateNickname.innerText = accountData.state.msg;
-        // console.log(accountData);
         ok.nickname = accountData.state.ok;
+        inputError(ok.nickname, stateNickname, accountData.state.msg);
     }
 };
 

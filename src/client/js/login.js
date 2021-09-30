@@ -33,6 +33,7 @@ const handleSubmit = async (event) => {
     if (!ok) {
         event.preventDefault();
         submitState.innerText = msg;
+        submitState.classList.add("red");
     } else {
         await fetch("/login", {
             method: "POST",

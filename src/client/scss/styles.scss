@@ -5,6 +5,7 @@
 //components
 @import "components/header.scss";
 @import "components/footer.scss";
+@import "components/accountErr.scss";
 
 //screens
 @import "screens/home.scss";
@@ -15,6 +16,7 @@ body {
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
         "Lucida Sans", Arial, sans-serif;
     background-color: #f4f3ea;
+    background-color: #eeeeee;
     // background-color: white;
     // position: relative;
     display: flex;
@@ -29,4 +31,6 @@ html {
 
 main {
     width: 60%;
+    margin-bottom: 10rem;
+    // padding: 1rem;
 }

@@ -1,5 +1,5 @@
 .account__wrapper {
-    margin-top: 10rem;
+    margin-top: 9rem;
 
     h1 {
         text-align: center;
@@ -13,6 +13,8 @@
 
         input {
             height: 40px;
+            border-radius: 5px;
+            border: none;
         }
         .registerbtn {
             margin-top: 20px;
@@ -21,9 +23,11 @@
             color: white;
         }
         .social__seletor {
-            display: flex;
-            gap: 0px 10px;
-            justify-content: center;
+            text-align: center;
+        }
+        p {
+            font-size: 0.8rem;
+            margin: 5px 0px;
         }
     }
 
@@ -31,6 +35,13 @@
         p {
             display: flex;
             justify-content: center;
+            align-items: center;
+
+            a {
+                padding: 0px 5px;
+                font-size: 1rem;
+                font-weight: bold;
+            }
         }
     }
 }
