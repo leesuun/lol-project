@@ -1,26 +1,45 @@
 .home__wrapper {
-    border: 1px solid black;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 5px black;
+    background-color: #b0b6bd;
     margin-top: 10rem;
 
     .contents {
         padding: 1rem;
 
         .content {
-            border: 1px solid red;
+            border: 2px solid #333e51;
             margin-bottom: 5rem;
 
             &:nth-child(1) {
                 display: flex;
                 flex-wrap: wrap;
-                padding: 1rem;
+                padding: 2.5rem 1rem 1rem 1rem;
+                border-radius: 1rem;
+                box-shadow: 3px 3px 3px black;
                 gap: 5px;
+                position: relative;
 
-                .testBOx {
-                    width: 100px;
-                    height: 100px;
-                    border: 1px solid red;
+                .lotation__header {
+                    position: absolute;
+                    top: 2px;
+                    left: 20px;
+                }
+
+                .lotation__list {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 5px;
+
+                    img {
+                        width: 100px;
+                        height: 100px;
+                    }
                 }
             }
+
             &:nth-child(2) {
                 height: 500px;
             }
