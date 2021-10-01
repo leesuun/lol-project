@@ -7,10 +7,25 @@ block content
         .contents
             .content
                 header.lotation__header
-                    h5 로테이션 챔피언 (2021.12.12 ~ 2021.01.06)
+                    h5#lotationTime
                 ul.lotation__list
                     each lotationImg in lotationImgs
                         +lotationImgs(lotationImg)
             .content 실시간 채팅
             .content 게시판
+
+block scripts
+    script.
+        const lotationTime = document.getElementById("lotationTime");
+        function getMonday(d) {
+            d = new Date(d);
+            const day = d.getDay();
+            const diff = d.getDate() - day + (day == 0 ? -6 : 2);
+            return new Date(d.setDate(diff));
+        }
+        const refDay = getMonday(new Date());
+        const finishDay = new Date(refDay.getTime() + 518400000);
+
+        const lotationCycle = "로테이션 챔피언 (" + refDay.toISOString().slice(0,10) + " ~ " + finishDay.toISOString().slice(0,10) + ")";
+        lotationTime.innerText = lotationCycle;
         
