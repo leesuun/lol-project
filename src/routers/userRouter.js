@@ -2,10 +2,10 @@ import express from "express";
 import app from "../app.js";
 
 import { logout } from "../controllers/userControllers/logout.js";
-import { publicMiddleware } from "../middleware.js";
+import { protectMiddleware } from "../middleware.js";
 
 const userRouter = express.Router();
 
-userRouter.get("/logout", publicMiddleware, logout);
+userRouter.get("/logout", protectMiddleware, logout);
 
 export default userRouter;

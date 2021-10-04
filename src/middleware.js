@@ -6,7 +6,8 @@ export const localMiddleware = (req, res, next) => {
 };
 
 export const protectMiddleware = (req, res, next) => {
-    if (res.locals.loggedIn) {
+    //비로그인 유저 기능 제한 미들웨어
+    if (!res.locals.loggedIn) {
         return res.redirect("/");
     } else {
         next();
@@ -14,9 +15,10 @@ export const protectMiddleware = (req, res, next) => {
 };
 
 export const publicMiddleware = (req, res, next) => {
+    // 로그인 유저 페이지 이동 제한
     if (!res.locals.loggedIn) {
-        return res.redirect("/");
-    } else {
         next();
+    } else {
+        return res.redirect("/");
     }
 };

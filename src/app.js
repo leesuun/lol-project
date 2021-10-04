@@ -5,8 +5,9 @@ import MongoStore from "connect-mongo";
 
 import apiRouter from "./routers/apiRouter.js";
 import globalRouter from "./routers/globalRouter.js";
-import { localMiddleware } from "./middleware.js";
 import userRouter from "./routers/userRouter.js";
+import boardRouter from "./routers/boardRouter.js";
+import { localMiddleware } from "./middleware.js";
 
 const logger = morgan("dev");
 const app = express();
@@ -33,6 +34,7 @@ app.use(localMiddleware);
 app.use("/assets", express.static("assets"));
 app.use("/", globalRouter);
 app.use("/user", userRouter);
+app.use("/board", boardRouter);
 app.use("/api", apiRouter);
 
 export default app;
