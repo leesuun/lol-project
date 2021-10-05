@@ -1,21 +1,98 @@
 extends base/layout
 block content
-    table(style="margin-top:10rem")
-        thead 
-            tr
-                td 번호
-                td 제목
-                td 작성자
-                td 날짜
-                td 조회수
-        tbody
-            tr
-                td 1
-                td 안녕
-                td 리수
-                td 2021.10.01
-                td 0회
-    a(href="/board/write") 글쓰기 
+    .board__wrapper
+        form
+            input(type="text")
+            div
+                span(style="border:1px solid black;background-color:green") 최신글
+                span(style="border:1px solid black") 인기글 
+        table.table.table-hover
+            thead 
+                tr
+                    td.number 번호
+                    td.title 제목
+                    td.author 작성자
+                    td.createAt 작성일
+                    td.views 조회수
+            tbody
+                tr
+                    td 1000
+                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
+                    td ㅁㄴㅇㄴㅁㅇ
+                    td 2021.23.23
+                    td 100회
+                tr
+                    td 1000
+                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
+                    td ㅁㄴㅇㄴㅁㅇ
+                    td 2021.23.23
+                    td 100회
+                tr
+                    td 1000
+                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
+                    td ㅁㄴㅇㄴㅁㅇ
+                    td 2021.23.23
+                    td 100회
+                tr
+                    td 1000
+                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
+                    td ㅁㄴㅇㄴㅁㅇ
+                    td 2021.23.23
+                    td 100회
+                tr
+                    td 1000
+                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
+                    td ㅁㄴㅇㄴㅁㅇ
+                    td 2021.23.23
+                    td 100회
+                tr
+                    td 1000
+                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
+                    td ㅁㄴㅇㄴㅁㅇ
+                    td 2021.23.23
+                    td 100회
+                tr
+                    td 1000
+                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
+                    td ㅁㄴㅇㄴㅁㅇ
+                    td 2021.23.23
+                    td 100회
+                tr
+                    td 1000
+                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
+                    td ㅁㄴㅇㄴㅁㅇ
+                    td 2021.23.23
+                    td 100회
+                tr
+                    td 1000
+                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
+                    td ㅁㄴㅇㄴㅁㅇ
+                    td 2021.23.23
+                    td 100회
+                tr
+                    td 1000
+                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
+                    td ㅁㄴㅇㄴㅁㅇ
+                    td 2021.23.23
+                    td 100회
+                tr
+                    td 1000
+                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
+                    td ㅁㄴㅇㄴㅁㅇ
+                    td 2021.23.23
+                    td 100회
+                tr
+                    td 1000
+                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
+                    td ㅁㄴㅇㄴㅁㅇ
+                    td 2021.23.23
+                    td 100회
+
+
+        div
+            button 이전
+            button 다음
+            a(href="/board/write") 글쓰기 
 
 
 

@@ -1,0 +1,39 @@
+.board__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: $main-top;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+
+    form {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        margin-bottom: 1rem;
+        div {
+            margin-left: 1rem;
+            span {
+                padding: 2px;
+            }
+        }
+    }
+
+    thead {
+        tr {
+            text-align: center;
+        }
+    }
+
+    thead,
+    tbody {
+        tr {
+            text-align: center;
+            td {
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+}
