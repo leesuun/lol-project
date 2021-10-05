@@ -16,6 +16,7 @@ export const postLogin = async (req, res) => {
             ? await User.findOne({ userId: successId })
             : await User.findOne({ userId });
     // console.log(user);
+    await user.save();
 
     const ACCOUNT_URL = `summoner/v4/summoners/by-account/${user.accountId}?api_key=${process.env.API_KEY}`;
     const userInfo = await (
@@ -25,7 +26,7 @@ export const postLogin = async (req, res) => {
     req.session.loggedIn = true;
     req.session.user = user;
     req.session.userInfo = userInfo;
-    console.log(req.session);
+    // console.log(req.session);
 
     return res.redirect("/");
 };

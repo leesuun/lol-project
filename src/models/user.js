@@ -18,16 +18,18 @@ const userSchema = mongoose.Schema({
         type: String,
         trim: true,
         require: true,
-        validate: {
-            validator: function (password) {
-                return regex.password.test(password);
-            },
-        },
+        // validate: {
+        //     validator: function (password) {
+        //         return regex.password.test(password);
+        //     },
+        // },
     },
     nickname: { type: String, require: true, trim: true },
     summonerId: { type: String, require: true, trim: true },
     accountId: { type: String, require: true, trim: true },
     puuId: { type: String, require: true, trim: true },
+
+    posting: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
 });
 
 userSchema.pre("save", async function (next) {
