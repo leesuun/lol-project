@@ -1,5 +1,5 @@
 // configs
-@import "configs/variable";
+@import "configs/variable.scss";
 @import "configs/reset.scss";
 
 //components
@@ -10,6 +10,7 @@
 //screens
 @import "screens/home.scss";
 @import "screens/account.scss";
+@import "screens/writeBoard.scss";
 
 body {
     // height: 100vh;

@@ -8,7 +8,7 @@ export const getLogin = (req, res) => {
 
 export const postLogin = async (req, res) => {
     const {
-        body: { successId, userId, ok },
+        body: { successId, userId },
     } = req;
 
     const user =
@@ -23,7 +23,9 @@ export const postLogin = async (req, res) => {
     ).json();
 
     req.session.loggedIn = true;
-    req.session.user = userInfo;
+    req.session.user = user;
+    req.session.userInfo = userInfo;
+    console.log(req.session);
 
     return res.redirect("/");
 };
