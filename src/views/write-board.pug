@@ -2,7 +2,7 @@ extends base/layout
 block content
     .board-write__wrapper
         form(method="POST")
-            input(type="text" placeholder="제목" name="title" required)
+            input(type="text" placeholder="제목" name="title" required maxlength=35)
             textarea(id="editor4" name="contents" placeholder="본문" wrap="hard" cols=30 required )
             button(type="submit") 게시하기
 block scripts

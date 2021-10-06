@@ -1,11 +1,14 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const BASE_JS = "/src/client/js/";
+
 module.exports = {
     entry: {
-        main: "/src/client/js/main.js",
-        join: "/src/client/js/join.js",
-        login: "/src/client/js/login.js",
+        main: BASE_JS + "main.js",
+        join: BASE_JS + "join.js",
+        login: BASE_JS + "login.js",
+        paging: BASE_JS + "paging.js",
     },
 
     output: {

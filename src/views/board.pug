@@ -1,4 +1,7 @@
 extends base/layout
+
+include ./mixins/boardContents
+
 block content
     .board__wrapper
         form
@@ -14,46 +17,19 @@ block content
                     td.author 작성자
                     td.createAt 작성일
                     td.views 조회수
-            tbody
-                tr
-                    td 1000
-                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
-                    td ㅁㄴㅇㄴㅁㅇ
-                    td 2021.23.23
-                    td 100회
-                tr
-                    td 1000
-                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
-                    td ㅁㄴㅇㄴㅁㅇ
-                    td 2021.23.23
-                    td 100회
-                tr
-                    td 1000
-                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
-                    td ㅁㄴㅇㄴㅁㅇ
-                    td 2021.23.23
-                    td 100회
-                tr
-                    td 1000
-                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
-                    td ㅁㄴㅇㄴㅁㅇ
-                    td 2021.23.23
-                    td 100회
-                tr
-                    td 1000
-                    td 안녕 리그오브 레전드 같이 할 사 람 구함 
-                    td ㅁㄴㅇㄴㅁㅇ
-                    td 2021.23.23
-                    td 100회
-
-
-
-        div
-            button 이전
-            button 다음
+            if (postings.length > 0)
+                each posting in postings
+                    +postings(posting)
+        div#pageController.board__page
+            if (page > 1)
+                a(href=`/board/page=${Number(page)-1}`) 
+                    button#previousBtn.pre__btn 이전
+            a(href=`/board/page=${Number(page)+1}`) 
+                button#nextBtn.next__btn 다음
             if loggedIn
                 a(href="/board/write") 글쓰기 
-
+block scripts
+    script(src="/assets/js/paging.js") 
 
 
 

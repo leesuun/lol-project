@@ -1,0 +1,8 @@
+mixin postings(info)
+    tbody
+        tr
+            td=info.number
+            td=info.title
+            td=info.author
+            td #{info.createAt.toISOString().slice(0,10)}
+            td=info.views

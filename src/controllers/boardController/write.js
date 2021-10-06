@@ -19,18 +19,21 @@ export const postWrite = async (req, res) => {
         return res.redirect("/");
     }
 
+    const postingLength = await Post.find({});
+
     const posting = await Post.create({
         title,
         contents,
-        date: new Date(),
+        creatAt: new Date(),
         author: user.nickname,
         views: 0,
         profileIconId,
         owner: _id,
+        number: postingLength.length,
     });
 
     user.posting.push(posting._id);
     await user.save();
 
-    return res.redirect("/board");
+    return res.redirect("/board/page=1");
 };
