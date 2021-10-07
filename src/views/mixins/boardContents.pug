@@ -1,7 +1,7 @@
 mixin postings(info)
     tbody
-        tr
-            td=info.number
+        tr(onclick="location.href='#'" style="cursor:pointer") 
+            td=info.number  
             td=info.title
             td=info.author
             td #{info.createAt.toISOString().slice(0,10)}

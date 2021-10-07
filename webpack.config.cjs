@@ -8,7 +8,6 @@ module.exports = {
         main: BASE_JS + "main.js",
         join: BASE_JS + "join.js",
         login: BASE_JS + "login.js",
-        paging: BASE_JS + "paging.js",
     },
 
     output: {
