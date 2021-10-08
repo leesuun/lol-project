@@ -1,5 +1,5 @@
 {
-  "type":"module",
+  "type": "module",
   "name": "lol-project",
   "version": "1.0.0",
   "description": "league of legend project",
@@ -19,8 +19,8 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "mongodb": "^4.1.2",
-    "mongoose": "^6.0.6",
     "node-fetch": "^3.0.0",
+    "mongoose": "^5.13.7",
     "pug": "^3.0.2"
   },
   "devDependencies": {

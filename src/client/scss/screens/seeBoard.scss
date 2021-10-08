@@ -1,0 +1,69 @@
+.seeBoard__wrapper {
+    margin-top: $main-top;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    padding: 1rem;
+
+    header {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        margin-bottom: 1rem;
+        h2 {
+            text-align: center;
+        }
+        .see__info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+
+            .see__author {
+                display: flex;
+                align-items: center;
+                img {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                }
+                span {
+                    margin-left: 5px;
+                }
+            }
+            .see__meta {
+                span {
+                    margin-right: 1rem;
+
+                    &:nth-child(1) {
+                        font-size: 0.9rem;
+                        color: gray;
+                    }
+                }
+            }
+        }
+    }
+
+    .content {
+        margin-bottom: 1rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    }
+
+    .comment {
+        .write__comment {
+            display: flex;
+            margin-bottom: 3rem;
+            textarea {
+                border: none;
+                padding: 0.3rem;
+                border-radius: 1rem;
+                width: 80%;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+            button {
+                margin-left: 1rem;
+            }
+        }
+    }
+}

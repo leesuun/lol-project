@@ -11,11 +11,8 @@ export const postJoin = async (req, res) => {
         body: { userId, password, accountData, statusCheck },
     } = req;
 
-    console.log(req.body);
-
     if (statusCheck) {
         try {
-            console.log(password);
             const user = await User.create({
                 userId,
                 password,
@@ -24,7 +21,6 @@ export const postJoin = async (req, res) => {
                 puuId: accountData.puuid,
                 nickname: accountData.name,
             });
-            console.log(user);
         } catch (error) {
             console.log(error);
         }

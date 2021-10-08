@@ -35,5 +35,6 @@ export const postWrite = async (req, res) => {
     user.posting.push(posting._id);
     await user.save();
 
+    console.log(user);
     return res.redirect("/board/page=1");
 };

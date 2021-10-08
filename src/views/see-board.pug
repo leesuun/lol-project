@@ -1,0 +1,39 @@
+extends base/layout
+
+block content
+    .seeBoard__wrapper
+        header.see__header
+            h2=posting.title
+            .see__info
+                .see__author
+                    img(src=`https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/${posting.profileIconId}.png`, alt="")
+                    span=posting.author
+                .see__meta
+                    span.createAt #{posting.createAt.toISOString().slice(0,10)}
+                    span.commentCnt="댓글: "+1
+                    span.viewsCnt="조회수: "+posting.views 
+        .content
+            p#content #{posting.contents}
+            script.
+                const content = document.getElementById("content")
+                const contentText = content.innerText
+                const doc = new DOMParser().parseFromString(contentText, "text/html");
+                content.innerHTML = doc.body.innerHTML
+                
+        .comment
+            .write__comment
+                textarea(name="comment", rows="3") 
+                button 등록
+            ul.comments
+                li 개웃기네요           작성자: 홍길동 방금전
+                hr
+                li 개웃기네요           작성자: 홍길동 방금전
+                hr
+                li 개웃기네요           작성자: 홍길동 방금전
+                hr
+                li 개웃기네요           작성자: 홍길동 방금전
+                
+
+                
+
+    

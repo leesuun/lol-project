@@ -14,6 +14,16 @@ export const getBoard = async (req, res) => {
         .sort({ number: "desc" })
         .limit(limitCnt)
         .skip(skip);
-
     return res.render("board", { postings, page });
+};
+
+export const seeWrite = async (req, res) => {
+    const {
+        params: { id },
+    } = req;
+
+    const posting = await Post.findById(id);
+    console.log(posting);
+
+    return res.render("see-board", { posting });
 };

@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import regex from "../regex.js";
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
     userId: {
         type: String,
         unique: true,
