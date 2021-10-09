@@ -27,3 +27,13 @@ export const seeWrite = async (req, res) => {
 
     return res.render("see-board", { posting });
 };
+
+export const registerViews = async (req, res) => {
+    const {
+        body: { postId },
+    } = req;
+
+    const posting = await Post.findById(postId);
+    posting.views += 1;
+    posting.save();
+};

@@ -1,6 +1,6 @@
 mixin postings(info)
     tbody
-        tr(onclick=`location.href="/board/${info._id}/see"` style="cursor:pointer") 
+        tr#postsInfo(onclick=`location.href="/board/${info._id}/see"` data-id=info._id style="cursor:pointer") 
             td=info.number  
             td=info.title
             td=info.author
