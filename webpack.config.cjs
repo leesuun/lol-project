@@ -9,6 +9,7 @@ module.exports = {
         join: BASE_JS + "join.js",
         login: BASE_JS + "login.js",
         views: BASE_JS + "views.js",
+        comment: BASE_JS + "comment.js",
     },
 
     output: {

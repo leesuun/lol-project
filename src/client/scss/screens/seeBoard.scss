@@ -51,18 +51,58 @@
         .write__comment {
             display: flex;
             margin-bottom: 3rem;
-            textarea {
-                border: none;
-                padding: 0.3rem;
-                border-radius: 1rem;
-                width: 80%;
 
-                &:focus {
-                    outline: none;
+            form {
+                width: 100%;
+                display: flex;
+
+                textarea {
+                    border: none;
+                    padding: 0.3rem;
+                    // border-radius: 1rem;
+                    width: 65%;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+                button {
+                    margin-left: 1rem;
                 }
             }
-            button {
-                margin-left: 1rem;
+        }
+        .see__comment {
+            li {
+                display: flex;
+                justify-content: space-between;
+
+                .comment__info {
+                    display: flex;
+                    gap: 1rem;
+                    width: 100%;
+
+                    .comment__author {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 10%;
+                        flex-direction: column;
+                        gap: 0.5rem;
+
+                        .createAt {
+                            font-size: 0.8rem;
+                            color: gray;
+                        }
+                    }
+                    .comment__text {
+                        width: 70%;
+                    }
+                    .comment__menu {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
             }
         }
     }

@@ -30,6 +30,7 @@ const userSchema = new mongoose.Schema({
     puuId: { type: String, require: true, trim: true },
 
     posting: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
 });
 
 userSchema.pre("save", async function (next) {

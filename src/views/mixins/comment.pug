@@ -1,0 +1,12 @@
+mixin comments(info)
+    li
+        .comment__info
+            .comment__author
+                span.author=info.owner
+                span.createAt 1시간전
+            .comment__text
+                p=info.text 
+            .comment__menu
+                button.comment__delete 삭제
+                button.comment__edit 수정
+    hr

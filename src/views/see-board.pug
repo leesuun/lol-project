@@ -1,5 +1,7 @@
 extends base/layout
 
+include ./mixins/comment
+
 block content
     .seeBoard__wrapper
         header.see__header
@@ -20,20 +22,19 @@ block content
                 const doc = new DOMParser().parseFromString(contentText, "text/html");
                 content.innerHTML = doc.body.innerHTML
                 
-        .comment
+        .comment#comment(data-id=posting._id)
             .write__comment
-                textarea(name="comment", rows="3") 
-                button 등록
-            ul.comments
-                li 개웃기네요           작성자: 홍길동 방금전
-                hr
-                li 개웃기네요           작성자: 홍길동 방금전
-                hr
-                li 개웃기네요           작성자: 홍길동 방금전
-                hr
-                li 개웃기네요           작성자: 홍길동 방금전
-                
+                form#commentForm(method="POST")
+                    textarea#commentText(name="comment", rows="3") 
+                    button(type="submit")#commentRegisterBtn 등록
+            if (posting.comments.length >= 0)
+                .see__comment           
+                    ul#commentList.comment__list
+                        each comment in posting.comments
+                            +comments(comment)
 
-                
+
+block scripts
+    script(src="/assets/js/comment.js") 
 
     

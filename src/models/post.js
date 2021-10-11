@@ -7,8 +7,9 @@ const postSchema = new mongoose.Schema({
     author: { type: String, require: true, trim: true },
     views: { type: Number, require: true, default: 0 },
     profileIconId: { type: Number, default: 2076 },
-    owner: { type: mongoose.Schema.Types.ObjectId, ref: "Post" },
     number: { type: Number, require: true },
+    owner: { type: mongoose.Schema.Types.ObjectId, ref: "Post" },
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
 });
 
 const Post = mongoose.model("Post", postSchema);
