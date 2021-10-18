@@ -23,10 +23,13 @@ block content
                 content.innerHTML = doc.body.innerHTML
                 
         .comment#comment(data-id=posting._id)
-            .write__comment
-                form#commentForm(method="POST")
-                    textarea#commentText(name="comment", rows="3") 
-                    button(type="submit")#commentRegisterBtn 등록
+            header
+                h3 댓글
+            if loggedIn
+                .write__comment
+                    form#commentForm(method="POST")
+                        textarea#commentText(name="comment", rows="3")
+                        button(type="submit")#commentRegisterBtn.btn.btn-primary 등록
             if (posting.comments.length >= 0)
                 .see__comment           
                     ul#commentList.comment__list

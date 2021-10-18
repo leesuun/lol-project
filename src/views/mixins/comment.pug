@@ -2,11 +2,13 @@ mixin comments(info)
     li
         .comment__info
             .comment__author
-                span.author=info.owner
-                span.createAt 1시간전
+                span.author=info.nickname
+                span.createAt #{info.createAt.toISOString().slice(0,10)}
             .comment__text
-                p=info.text 
-            .comment__menu
-                button.comment__delete 삭제
-                button.comment__edit 수정
+                p=info.text
+            // 작성자 검증 필요 
+            if String(loggedInUser._id) === String(info.owner)
+                .comment__menu
+                    button(data-commentid=info._id)#deleteBtn.btn.btn-danger.comment__delete 삭제
+                    button#editBtn.btn.btn-info.comment__edit 수정
     hr

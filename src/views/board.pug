@@ -7,8 +7,9 @@ block content
         form
             input(type="text")
             div
-                span(style="border:1px solid black;background-color:green") 최신글
-                span(style="border:1px solid black") 인기글 
+                button.btn 최신글
+                button.btn 인기글
+
         table.table.table-hover
             thead 
                 tr
@@ -23,10 +24,11 @@ block content
         div#pageController.board__page
             if (page > 1)
                 a(href=`/board/page=${Number(page)-1}`) 
-                    button#previousBtn.pre__btn 이전
+                    button#previousBtn.btn.btn-info.pre__btn 이전
             a(href=`/board/page=${Number(page)+1}`) 
-                button#nextBtn.next__btn 다음
+                button#nextBtn.btn.btn-info.next__btn 다음
             if loggedIn
-                a(href="/board/write") 글쓰기 
+                a(href="/board/write").write__post 
+                    button.btn.btn-info 글쓰기 
 block scripts
     script(src="/assets/js/views.js") 

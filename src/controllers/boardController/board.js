@@ -25,6 +25,7 @@ export const seeWrite = async (req, res) => {
     } = req;
 
     const posting = await Post.findById(id).populate("comments");
+    console.log(posting);
 
     return res.render("see-board", { posting });
 };
@@ -52,6 +53,7 @@ export const createComment = async (req, res) => {
         author: null,
         text: null,
         createAt: null,
+        newCommentId: null,
     };
 
     const posting = await Post.findById(id);
@@ -60,16 +62,38 @@ export const createComment = async (req, res) => {
     const comment = await Comment.create({
         text: content,
         createAt: new Date(),
-        owner: user.nickname,
+        nickname: user.userId,
+        owner: _id,
         posting: posting._id,
     });
 
-    commentInfo.author = comment.owner;
+    commentInfo.author = comment.nickname;
     commentInfo.createAt = comment.createAt.toISOString().slice(0, 10);
     commentInfo.text = comment.text;
+    commentInfo.newCommentId = comment._id;
 
     posting.comments.push(comment._id);
     await posting.save();
 
     res.send(commentInfo);
+};
+
+export const deleteComment = async (req, res) => {
+    const {
+        body: { commentid },
+        session: {
+            user: { _id },
+        },
+    } = req;
+
+    const comment = await Comment.findById(commentid);
+
+    if (String(comment.owner) !== String(_id)) {
+        // not owner
+        res.sendStatus(403);
+        console.log("not owner");
+    } else {
+        await Comment.findByIdAndDelete({ _id: commentid });
+        res.sendStatus(200);
+    }
 };

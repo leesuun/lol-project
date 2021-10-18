@@ -6,6 +6,7 @@
     margin-top: $main-top;
     border: 1px solid rgba(0, 0, 0, 0.5);
     padding: 1rem;
+    position: relative;
 
     form {
         width: 100%;
@@ -34,6 +35,14 @@
             td {
                 border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             }
+        }
+    }
+
+    .board__page {
+        .write__post {
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
         }
     }
 }

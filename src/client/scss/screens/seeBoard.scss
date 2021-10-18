@@ -4,7 +4,7 @@
     border-radius: 1rem;
     padding: 1rem;
 
-    header {
+    .see__header {
         border-bottom: 1px solid rgba(0, 0, 0, 0.3);
         margin-bottom: 1rem;
         h2 {
@@ -43,11 +43,17 @@
 
     .content {
         margin-bottom: 1rem;
-        padding: 1rem 0;
+        padding: 1rem 0 10rem 0;
         border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     }
 
     .comment {
+        header {
+            h3 {
+                margin-bottom: 2rem;
+            }
+        }
+
         .write__comment {
             display: flex;
             margin-bottom: 3rem;
@@ -59,8 +65,7 @@
                 textarea {
                     border: none;
                     padding: 0.3rem;
-                    // border-radius: 1rem;
-                    width: 65%;
+                    width: 80%;
 
                     &:focus {
                         outline: none;
@@ -86,11 +91,12 @@
                         justify-content: center;
                         align-items: center;
                         width: 10%;
+                        font-size: 0.9rem;
                         flex-direction: column;
                         gap: 0.5rem;
 
                         .createAt {
-                            font-size: 0.8rem;
+                            font-size: 0.7rem;
                             color: gray;
                         }
                     }

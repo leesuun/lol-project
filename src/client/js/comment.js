@@ -2,11 +2,15 @@ const comment = document.getElementById("comment");
 const commentForm = document.getElementById("commentForm");
 const commentText = document.getElementById("commentText");
 const commentList = document.getElementById("commentList");
+const deleteBtn = document.querySelectorAll("#deleteBtn");
+
+console.log(deleteBtn);
 
 let owner = null;
 let time = null;
+let newCommentId = null;
 
-function paintComment(content, owner, time) {
+function paintComment(content, owner, time, newCommentId) {
     const li = document.createElement("li");
     const commentInfo = document.createElement("div");
     const commentAuthor = document.createElement("div");
@@ -41,9 +45,10 @@ function paintComment(content, owner, time) {
     const deleteBtn = document.createElement("button");
     const editBtn = document.createElement("button");
 
-    deleteBtn.classList.add("comment__delete");
+    deleteBtn.classList.add("comment__delete", "btn", "btn-danger");
     deleteBtn.innerText = "삭제";
-    editBtn.classList.add("comment__edit");
+    deleteBtn.dataset.commentid = newCommentId;
+    editBtn.classList.add("comment__edit", "btn", "btn-info");
     editBtn.innerText = "수정";
 
     commentMenu.appendChild(deleteBtn);
@@ -60,7 +65,17 @@ function paintComment(content, owner, time) {
     li.appendChild(commentInfo);
     commentList.appendChild(li);
     commentList.appendChild(hr);
+
+    deleteBtn.addEventListener("click", handleDelete);
 }
+
+const deleteComment = (commentid) => {
+    for (let i = 0; i < deleteBtn.length; i++) {
+        if (deleteBtn[i].dataset.commentid === commentid) {
+            deleteBtn[i].parentNode.parentNode.remove();
+        }
+    }
+};
 
 const handleSubmit = async (event) => {
     event.preventDefault();
@@ -81,10 +96,43 @@ const handleSubmit = async (event) => {
         const data = await response.json();
         owner = data.author;
         time = data.createAt;
+        newCommentId = data.newCommentId;
 
-        paintComment(content, owner, time);
+        paintComment(content, owner, time, newCommentId);
         commentText.value = "";
     }
 };
 
-commentForm.addEventListener("submit", handleSubmit);
+async function handleDelete(event) {
+    const postingId = comment.dataset.id;
+    const {
+        target: {
+            dataset: { commentid },
+        },
+    } = event;
+
+    const response = await fetch(`/api/${postingId}/deleteComment`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            commentid,
+        }),
+    });
+
+    if (response.status === 200) {
+        deleteComment(commentid);
+        event.target.parentNode.parentNode.remove();
+    }
+}
+
+if (commentForm) {
+    commentForm.addEventListener("submit", handleSubmit);
+}
+
+if (deleteBtn) {
+    deleteBtn.forEach((element) => {
+        element.addEventListener("click", handleDelete);
+    });
+}

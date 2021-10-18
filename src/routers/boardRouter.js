@@ -15,6 +15,6 @@ boardRouter
     .get(getWrite)
     .post(postWrite);
 
-boardRouter.get("/:id/see", seeWrite);
+boardRouter.get("/:id([a-z0-9]{24})/see", seeWrite);
 
 export default boardRouter;
