@@ -1,8 +1,8 @@
 mixin postings(info)
     tbody
         tr#postsInfo(onclick=`location.href="/board/${info._id}/see"` data-id=info._id style="cursor:pointer") 
-            td=info.number  
-            td=info.title
-            td=info.author
-            td #{info.createAt.toISOString().slice(0,10)}
-            td=info.views
+            td.number=info.number  
+            td.title=info.title
+            td.author=info.author
+            td.createAt #{info.createAt.toISOString().slice(0,10)}
+            td.views=info.views

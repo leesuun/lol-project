@@ -5,6 +5,10 @@ include ./mixins/comment
 block content
     .seeBoard__wrapper
         header.see__header
+            if String(loggedInUser._id) === String(posting.owner)
+                menu
+                    a(href=`/board/${posting._id}/delete`) 글삭제
+                    a(href="#") 글수정               
             h2=posting.title
             .see__info
                 .see__author
@@ -12,7 +16,7 @@ block content
                     span=posting.author
                 .see__meta
                     span.createAt #{posting.createAt.toISOString().slice(0,10)}
-                    span.commentCnt="댓글: "+1
+                    span.commentCnt="댓글: "+posting.comments.length
                     span.viewsCnt="조회수: "+posting.views 
         .content
             p#content #{posting.contents}

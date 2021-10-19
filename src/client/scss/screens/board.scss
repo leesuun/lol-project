@@ -4,7 +4,6 @@
     justify-content: center;
     align-items: center;
     margin-top: $main-top;
-    border: 1px solid rgba(0, 0, 0, 0.5);
     padding: 1rem;
     position: relative;
 
@@ -14,10 +13,11 @@
         align-items: center;
         justify-content: right;
         margin-bottom: 1rem;
+
         div {
             margin-left: 1rem;
-            span {
-                padding: 2px;
+            .new-sort__btn {
+                margin-right: 3px;
             }
         }
     }
@@ -35,6 +35,15 @@
             td {
                 border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             }
+        }
+        .number,
+        .author,
+        .createAt,
+        .views {
+            font-size: 0.95rem;
+        }
+        .createAt {
+            color: gray;
         }
     }
 

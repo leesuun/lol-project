@@ -19,6 +19,32 @@ export const getBoard = async (req, res) => {
     return res.render("board", { postings, page });
 };
 
+export const postSearch = async (req, res) => {
+    const {
+        body: { keyword, New, Popular },
+    } = req;
+
+    const page = Number(req.params.page);
+
+    let postings = [];
+
+    if (keyword) {
+        postings = await Post.find({
+            title: {
+                $regex: new RegExp(`${keyword}`, "i"),
+            },
+        });
+    } else if (New === "") {
+        postings = await Post.find({}).sort({ number: "desc" });
+    } else if (Popular === "") {
+        postings = await Post.find({}).sort({ views: "desc" });
+    }
+    if (page <= 0) {
+        return res.redirect("/");
+    }
+    return res.render("board", { postings, page });
+};
+
 export const seeWrite = async (req, res) => {
     const {
         params: { id },
@@ -28,6 +54,25 @@ export const seeWrite = async (req, res) => {
     console.log(posting);
 
     return res.render("see-board", { posting });
+};
+
+export const deletePosting = async (req, res) => {
+    const {
+        params: { id },
+        session: {
+            user: { _id },
+        },
+    } = req;
+    console.log(_id);
+
+    const posting = await Post.findById(id);
+
+    if (String(_id) == String(posting.owner)) {
+        await Post.findByIdAndDelete(id);
+    } else {
+        console.log("forbidden");
+    }
+    return res.redirect("/");
 };
 
 export const registerViews = async (req, res) => {
