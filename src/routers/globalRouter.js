@@ -3,6 +3,7 @@ import express from "express";
 import { home } from "../controllers/globalcontroller/home.js";
 import { getJoin, postJoin } from "../controllers/globalcontroller/join.js";
 import { getLogin, postLogin } from "../controllers/globalcontroller/login.js";
+import { ranking } from "../controllers/globalcontroller/ranking.js";
 
 import { protectMiddleware, publicMiddleware } from "../middleware.js";
 
@@ -15,5 +16,6 @@ globalRouter
     .all(publicMiddleware)
     .get(getLogin)
     .post(postLogin);
+globalRouter.get("/ranking", ranking);
 
 export default globalRouter;

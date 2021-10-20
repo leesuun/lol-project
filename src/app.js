@@ -7,6 +7,7 @@ import apiRouter from "./routers/apiRouter.js";
 import globalRouter from "./routers/globalRouter.js";
 import userRouter from "./routers/userRouter.js";
 import boardRouter from "./routers/boardRouter.js";
+
 import { localMiddleware } from "./middleware.js";
 
 const logger = morgan("dev");

@@ -1,0 +1,104 @@
+.ranking__wrapper {
+    margin-top: $main-top;
+    display: block;
+
+    .ranking-highest__list,
+    .ranking-highest__item,
+    .ranking-highest__item--rank,
+    .ranking-highest__item--summoner,
+    .ranking-highest__item--tier {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ranking-highest {
+        padding: 1rem;
+        .ranking-highest__list {
+            gap: 1rem;
+
+            .ranking-highest__item {
+                flex-direction: column;
+                position: relative;
+                width: 25%;
+                padding: 1rem;
+                border: 5px solid gray;
+                border-radius: 1rem;
+                border-top-left-radius: 0;
+
+                .ranking-highest__item--rank {
+                    position: absolute;
+                    top: 0rem;
+                    left: 0rem;
+                }
+
+                .ranking-highest__item--summoner {
+                    flex-direction: column;
+                    margin-top: 1rem;
+                    gap: 0.5rem;
+
+                    img {
+                        border-radius: 50%;
+                        width: 50px;
+                        height: 50px;
+                    }
+                    span {
+                        font-weight: bold;
+                    }
+                }
+
+                .ranking-highest__item--tier {
+                    img {
+                        width: 50px;
+                        height: 50px;
+                    }
+                    .ranking-highest__item--tierLp {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.2rem;
+                        font-size: 0.8rem;
+
+                        span:nth-child(2) {
+                            font-weight: bold;
+                        }
+                    }
+                }
+
+                .ranking-highest__item--winratio {
+                    margin-top: 0.5rem;
+                }
+            }
+        }
+    }
+    .table > tbody > tr > td {
+        vertical-align: middle;
+    }
+    .ranking-table {
+        margin-top: 3rem;
+
+        .ranking-table__cell--summoner {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+
+            img {
+                border-radius: 50%;
+                width: 35px;
+                height: 35px;
+            }
+        }
+    }
+    .ranking-pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+        .ranking-pagination__list {
+            display: flex;
+            gap: 0.3rem;
+
+            button {
+                padding: 0.3rem 2.5rem;
+            }
+        }
+    }
+}
