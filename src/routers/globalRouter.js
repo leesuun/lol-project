@@ -16,6 +16,6 @@ globalRouter
     .all(publicMiddleware)
     .get(getLogin)
     .post(postLogin);
-globalRouter.get("/ranking", ranking);
+globalRouter.get("/ranking/page=:page", ranking);
 
 export default globalRouter;

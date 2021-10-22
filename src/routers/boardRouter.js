@@ -14,7 +14,7 @@ const boardRouter = express.Router();
 
 boardRouter.route("/page=:page").get(getBoard);
 boardRouter.post("/search/page=:page", postSearch);
-boardRouter.get("/:id([a-z0-9]{24})/delete", deletePosting);
+boardRouter.get("/:id([a-z0-9]{24})/delete", protectMiddleware, deletePosting);
 
 boardRouter
     .route("/write")
