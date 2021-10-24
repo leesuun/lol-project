@@ -19,6 +19,9 @@ export const ranking = async (req, res) => {
         });
     }
 
+    const tt = new Date();
+    console.log(tt);
+
     for (let i = skip - 15; i < skip; i++) {
         const ACCOUNT_URL = `summoner/v4/summoners/${challenger[i].summonerId}?api_key=${process.env.API_KEY}`;
         const userInfo = Promise.all([
@@ -30,10 +33,15 @@ export const ranking = async (req, res) => {
         ]);
     }
 
-    // return res.send(ary);
+    const ttt = new Date();
+    console.log(ttt);
+
+    // console.log(challenger[0]);
+
+    return res.send("sd");
 
     if (page >= 1) {
-        challenger = challenger.slice(skip - 50, skip);
+        challenger = challenger.slice(skip - 15, skip);
     }
 
     return res.render("ranking", { page, challenger });
