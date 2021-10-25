@@ -5,7 +5,7 @@ export const ranking = async (req, res) => {
     const response = await fetch(`${process.env.LOL_BASE_URL}${RANKING_URL}`);
     let data = null;
     let challenger = null;
-    const limit = 15;
+    const limit = 50;
     const skip = page * limit;
 
     if (1 > page || page > 6) {
@@ -19,29 +19,19 @@ export const ranking = async (req, res) => {
         });
     }
 
-    const tt = new Date();
-    console.log(tt);
-
-    for (let i = skip - 15; i < skip; i++) {
-        const ACCOUNT_URL = `summoner/v4/summoners/${challenger[i].summonerId}?api_key=${process.env.API_KEY}`;
-        const userInfo = Promise.all([
-            fetch(`${process.env.LOL_BASE_URL}${ACCOUNT_URL}`)
-                .then((response) => response.json())
-                .then((json) => {
-                    console.log(json);
-                }),
-        ]);
+    if (page === 1) {
+        for (let i = 0; i < 3; i++) {
+            const ACCOUNT_URL = `summoner/v4/summoners/${challenger[i].summonerId}?api_key=${process.env.API_KEY}`;
+            const userInfo = await (
+                await fetch(`${process.env.LOL_BASE_URL}${ACCOUNT_URL}`)
+            ).json();
+            challenger[i].profileIconId = userInfo.profileIconId;
+            challenger[i].summonerLevel = userInfo.summonerLevel;
+        }
     }
 
-    const ttt = new Date();
-    console.log(ttt);
-
-    // console.log(challenger[0]);
-
-    return res.send("sd");
-
     if (page >= 1) {
-        challenger = challenger.slice(skip - 15, skip);
+        challenger = challenger.slice(skip - limit, skip);
     }
 
     return res.render("ranking", { page, challenger });

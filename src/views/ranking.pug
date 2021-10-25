@@ -11,10 +11,10 @@ block content
                         each topInfo in [challenger[i]]
                             li.ranking-highest__item
                                 .ranking-highest__item--rank
-                                    i(style="color:#C9A83B").fas.fa-medal.fa-2x
-                                    span.summoner--level 300
+                                    i.fas.fa-medal.fa-2x
+                                    span.summoner--level=" Lv."+topInfo.summonerLevel
                                 .ranking-highest__item--summoner
-                                    img(style="" src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/4561.png", alt="")                    
+                                    img(style="" src=`https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/${topInfo.profileIconId}.png`, alt="")                    
                                     span=topInfo.summonerName
                                 .ranking-highest__item--tier
                                     img(style="" src="https://opgg-static.akamaized.net/images/medals/challenger_1.png?image=q_auto:best&v=1", alt="")
@@ -32,19 +32,15 @@ block content
                         th.ranking-table__header 닉네임
                         th.ranking-table__header 티어
                         th.ranking-table__header LP
-                        th.ranking-table__header 레벨
                         th.ranking-table__header 승률
                 tbody
                     - for(let i=3; i<50; i++){
                         each info in [challenger[i]]
                             tr.ranking-table__row 
                                 td.ranking-table__cell.ranking-table__cell--rank=i+1
-                                td.ranking-table__cell.ranking-table__cell--summoner
-                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/4561.png", alt="")
-                                    span=info.summonerName
+                                td.ranking-table__cell.ranking-table__cell--summoner=info.summonerName
                                 td.ranking-table__cell.ranking-table__cell--tier="Challenger "+info.rank
                                 td.ranking-table__cell.ranking-table__cell--lp=info.leaguePoints+" LP"
-                                td.ranking-table__cell.ranking-table__cell--level 302 
                                 td.ranking-table__cell.ranking-table__cell--winratio=info.wins+"승 "+info.losses+"패 "+ Math.ceil(info.wins/(info.wins+info.losses)*100)+"%"
                     - }
         else
@@ -55,7 +51,6 @@ block content
                         th.ranking-table__header 닉네임
                         th.ranking-table__header 티어
                         th.ranking-table__header LP
-                        th.ranking-table__header 레벨
                         th.ranking-table__header 승률
                 tbody
                     - for(let i=0; i<50; i++){
@@ -73,12 +68,9 @@ block content
                                     td.ranking-table__cell.ranking-table__cell--rank=201+i
                                 else if page === 6
                                     td.ranking-table__cell.ranking-table__cell--rank=251+i
-                                td.ranking-table__cell.ranking-table__cell--summoner
-                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/4561.png", alt="")
-                                    span=info.summonerName
+                                td.ranking-table__cell.ranking-table__cell--summoner=info.summonerName
                                 td.ranking-table__cell.ranking-table__cell--tier="Challenger "+info.rank
                                 td.ranking-table__cell.ranking-table__cell--lp=info.leaguePoints+" LP"
-                                td.ranking-table__cell.ranking-table__cell--level 302 
                                 td.ranking-table__cell.ranking-table__cell--winratio=info.wins+"승 "+info.losses+"패 "+ Math.ceil(info.wins/(info.wins+info.losses)*100)+"%"
                     - }
 

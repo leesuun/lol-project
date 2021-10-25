@@ -27,9 +27,34 @@
                 border-top-left-radius: 0;
 
                 .ranking-highest__item--rank {
+                    display: flex;
+                    width: 100%;
+                    padding: 0 0.5rem;
+                    justify-content: space-between;
                     position: absolute;
                     top: 0rem;
                     left: 0rem;
+                }
+                &:nth-child(1) {
+                    .ranking-highest__item--rank {
+                        i {
+                            color: #d6b548;
+                        }
+                    }
+                }
+                &:nth-child(2) {
+                    .ranking-highest__item--rank {
+                        i {
+                            color: silver;
+                        }
+                    }
+                }
+                &:nth-child(3) {
+                    .ranking-highest__item--rank {
+                        i {
+                            color: #c1704d;
+                        }
+                    }
                 }
 
                 .ranking-highest__item--summoner {
