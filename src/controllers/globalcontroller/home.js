@@ -3,6 +3,7 @@ import fetch from "node-fetch";
 async function getLotation() {
     const LOTATION_URL = `platform/v3/champion-rotations?api_key=${process.env.API_KEY}`;
     const ALLCHAMPION_URL = `${process.env.LOL_CDN_URL}data/en_US/champion.json`;
+
     const lotationData = await (
         await fetch(`${process.env.LOL_BASE_URL}${LOTATION_URL}`)
     ).json();
@@ -24,6 +25,7 @@ async function getLotation() {
             );
         }
     }
+
     lotationImg.sort();
     return lotationImg;
 }

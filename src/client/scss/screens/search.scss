@@ -1,0 +1,43 @@
+.search__wrapper {
+    margin-top: $main-top;
+
+    .search__contents {
+        display: flex;
+        border: 1px solid black;
+        padding: 1rem;
+        .side__content {
+            border: 1px solid black;
+            width: 400px;
+            height: 700px;
+            .summoner__metaData {
+            }
+            .ingame__info {
+            }
+        }
+
+        .real__content {
+            border: 1px solid black;
+            width: 100%;
+
+            .rank {
+                display: flex;
+                border: 1px solid black;
+                justify-content: center;
+                gap: 2rem;
+
+                .rankDivision {
+                    border: 1px solid black;
+                }
+                .soloRank {
+                }
+                .flexRank {
+                }
+            }
+            .gameList__info {
+                .latest__list {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

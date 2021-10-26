@@ -9,10 +9,10 @@ header.screen__header
         a(href="/board/page=1") 
             span Board
     div.contents
-        form
-            a(href="#")
+        form(action="/summoner/")
+            a(href="/")
                 span.main-logo CFS.GG
-            input(type="text").form-control
+            input(type="text" name="username").form-control
             button(type="submit").btn.btn-default
                 i.fas.fa-search.fa-lg
             button(type="submit").btn.btn-default

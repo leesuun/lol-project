@@ -1,0 +1,83 @@
+extends base/layout
+
+block content
+    .search__wrapper
+        .search__contents
+            .side__content
+                .summoner
+                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" style="width:30px;height:30px;").summoner__icon
+                    .summoner__metaData
+                        span.summoner__name 지노스프
+                        span.summoner__level Lv. 300
+                        span.summoner__ranking 500.000위 (상위 10%)
+                    span.summoner__lastPlayTime 2021년 12월 12일
+                    .summoner__menu
+                        button 정보 갱신
+                        button 인게임 정보
+                .ingame
+            .real__content
+                .rank 
+                    .rankDivision.soloRank
+                        .solo__metaData
+                            span.type 솔로 랭크
+                            .rank__metaData
+                                span.rank__tier 챌린저 I
+                                span.rank__lp 300 Lp
+                            .win__rate
+                            ul.topChampion
+                                li
+                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" style="width:30px;height:30px;")
+                                    div.topChampion__metaData
+                                        span.winRate 20%(10승 7패)
+                                        span.grade 3.27
+                                li
+                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" style="width:30px;height:30px;")
+                                    div.topChampion__metaData
+                                        span.winRate 20%(10승 7패)
+                                        span.grade 3.27
+                                li
+                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" style="width:30px;height:30px;")
+                                    div.topChampion__metaData
+                                        span.winRate 20%(10승 7패)
+                                        span.grade 3.27
+                    .rankDivision.flexRank
+                            span.type 자유 랭크
+                            .rank__metaData
+                                span.rank__tier 챌린저 I
+                                span.rank__lp 300 Lp
+                            .win__rate
+                            ul.topChampion
+                                li
+                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" style="width:30px;height:30px;")
+                                    div.topChampion__metaData
+                                        span.winRate 20%(10승 7패)
+                                        span.grade 3.27
+                                li
+                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" style="width:30px;height:30px;")
+                                    div.topChampion__metaData
+                                        span.winRate 20%(10승 7패)
+                                        span.grade 3.27
+                                li
+                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" style="width:30px;height:30px;")
+                                    div.topChampion__metaData
+                                        span.winRate 20%(10승 7패)
+                                        span.grade 3.27
+                .gameList
+                    ul.latest__list
+                        li asd
+                        li asd
+                        li asd 
+                        li asd
+                        li asd
+                        li asd
+                        li asd 
+
+block scripts
+    script.
+        const main = document.querySelector("main");
+        main.style.width= "80%";
+
+
+
+
+    
