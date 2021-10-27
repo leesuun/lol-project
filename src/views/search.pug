@@ -5,63 +5,87 @@ block content
         .search__contents
             .side__content
                 .summoner
-                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" style="width:30px;height:30px;").summoner__icon
+                    img(src=`https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/${userInfo.profileIconId}.png`).summoner__icon
                     .summoner__metaData
-                        span.summoner__name 지노스프
-                        span.summoner__level Lv. 300
-                        span.summoner__ranking 500.000위 (상위 10%)
-                    span.summoner__lastPlayTime 2021년 12월 12일
-                    .summoner__menu
-                        button 정보 갱신
-                        button 인게임 정보
+                        span.summoner__name=userInfo.name
+                        span.summoner__level="레벨: "+userInfo.summonerLevel
+                        //- span.summoner__ranking 500.000위 (상위 10%)
+                        span.summoner__lastPlayTime="최근게임: "+ new Date(userInfo.revisionDate).toISOString().slice(0,10)
+                .summoner__menu
+                    button 정보 갱신
+                    button 인게임 정보
                 .ingame
             .real__content
-                .rank 
-                    .rankDivision.soloRank
-                        .solo__metaData
-                            span.type 솔로 랭크
+                .rank
+                    if soloInfo              
+                        .rankDivision.soloRank
+                            img(src=`https://opgg-static.akamaized.net/images/medals/${soloInfo.tier.toUpperCase()}_1.png?image=q_auto:best&v=1`, alt="").emblem
+                            header
+                                h3.type Solo Rank
                             .rank__metaData
-                                span.rank__tier 챌린저 I
-                                span.rank__lp 300 Lp
-                            .win__rate
-                            ul.topChampion
+                                span.rank__tier=soloInfo.tier+" "+soloInfo.rank+" "
+                                span.rank__lp=soloInfo.leaguePoints+" LP"
+                            span.win__rate=soloInfo.wins+"승 "+soloInfo.losses+"패 "+Math.ceil(soloInfo.wins/(soloInfo.wins+soloInfo.losses)*100)+"%"
+                            ul.topChampion__list
                                 li
-                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" style="width:30px;height:30px;")
+                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" )
                                     div.topChampion__metaData
                                         span.winRate 20%(10승 7패)
                                         span.grade 3.27
                                 li
-                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" style="width:30px;height:30px;")
+                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" )
                                     div.topChampion__metaData
                                         span.winRate 20%(10승 7패)
                                         span.grade 3.27
                                 li
-                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" style="width:30px;height:30px;")
+                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" )
                                     div.topChampion__metaData
                                         span.winRate 20%(10승 7패)
                                         span.grade 3.27
-                    .rankDivision.flexRank
-                            span.type 자유 랭크
+                    else
+                        .rankDivision.soloRank
+                            img(src=`https://opgg-static.akamaized.net/images/medals/default.png?image=q_auto:best&v=1`, alt="").emblem
+                            header
+                                h3.type Solo Rank
                             .rank__metaData
-                                span.rank__tier 챌린저 I
-                                span.rank__lp 300 Lp
-                            .win__rate
-                            ul.topChampion
+                                span.rank__tier UnLank
+                                span.rank__lp  0 LP
+                            span.win__rate 0승 0패 0%
+
+                    if flexInfo
+                        .rankDivision.flexRank
+                            img(src=`https://opgg-static.akamaized.net/images/medals/${flexInfo.tier.toUpperCase()}_1.png?image=q_auto:best&v=1`, alt="").emblem
+                            header
+                                h3.type Flex Rank
+                            .rank__metaData
+                                span.rank__tier=flexInfo.tier+" "+flexInfo.rank+" "
+                                span.rank__lp=flexInfo.leaguePoints+" LP"
+                            span.win__rate=flexInfo.wins+"승 "+flexInfo.losses+"패 "+Math.ceil(soloInfo.wins/(soloInfo.wins+soloInfo.losses)*100)+"%"
+                            ul.topChampion__list
                                 li
-                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" style="width:30px;height:30px;")
+                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" )
                                     div.topChampion__metaData
                                         span.winRate 20%(10승 7패)
                                         span.grade 3.27
                                 li
-                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" style="width:30px;height:30px;")
+                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" )
                                     div.topChampion__metaData
                                         span.winRate 20%(10승 7패)
                                         span.grade 3.27
                                 li
-                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" style="width:30px;height:30px;")
+                                    img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" )
                                     div.topChampion__metaData
                                         span.winRate 20%(10승 7패)
                                         span.grade 3.27
+                    else
+                        .rankDivision.flexRank
+                            img(src=`https://opgg-static.akamaized.net/images/medals/default.png?image=q_auto:best&v=1`, alt="").emblem
+                            header
+                                h3.type Flex Rank
+                            .rank__metaData
+                                span.rank__tier UnLank
+                                span.rank__lp  0 LP
+                            span.win__rate 0승 0패 0%
                 .gameList
                     ul.latest__list
                         li asd
