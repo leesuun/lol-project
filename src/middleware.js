@@ -1,7 +1,8 @@
 export const localMiddleware = (req, res, next) => {
     res.locals.loggedIn = Boolean(req.session.loggedIn);
     res.locals.loggedInUser = req.session.user || {};
-    res.locals.userInfo = req.session.userInfo;
+    res.locals.loggedInUserInfo = req.session.userInfo;
+
     // console.log(res.locals.loggedInUser);
     next();
 };

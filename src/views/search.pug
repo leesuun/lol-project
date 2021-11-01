@@ -28,12 +28,6 @@ block content
                                 span.rank__tier=soloInfo.tier+" "+soloInfo.rank+" "
                                 span.rank__lp=soloInfo.leaguePoints+" LP"
                             span.win__rate=soloInfo.wins+"승 "+soloInfo.losses+"패 "+Math.ceil(soloInfo.wins/(soloInfo.wins+soloInfo.losses)*100)+"%"
-                            //- ul.topChampion__list
-                            //-     li
-                            //-         img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" )
-                            //-         div.topChampion__metaData
-                            //-             span.winRate 20%(10승 7패)
-                            //-             span.grade 3.27
 
                     else
                         .rankDivision.soloRank
@@ -54,12 +48,6 @@ block content
                                 span.rank__tier=flexInfo.tier+" "+flexInfo.rank+" "
                                 span.rank__lp=flexInfo.leaguePoints+" LP"
                             span.win__rate=flexInfo.wins+"승 "+flexInfo.losses+"패 "+Math.ceil(soloInfo.wins/(soloInfo.wins+soloInfo.losses)*100)+"%"
-                            //- ul.topChampion__list
-                            //-     li
-                            //-         img(src="https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/1161.png" )
-                            //-         div.topChampion__metaData
-                            //-             span.winRate 20%(10승 7패)
-                            //-             span.grade 3.27
 
                     else
                         .rankDivision.flexRank
@@ -72,8 +60,8 @@ block content
                             span.win__rate 0승 0패 0%
                 .gameList
                     ul.latest__list
-                        each list in test
-                            +gameDetail(list)
+                        each gameDetail in gameDetails
+                            +gameDetail(gameDetail)
 
 
 block scripts

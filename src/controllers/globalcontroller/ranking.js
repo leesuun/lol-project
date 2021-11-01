@@ -19,14 +19,21 @@ export const ranking = async (req, res) => {
         });
     }
 
+    let ACCOUNT_URL = [];
+
     if (page === 1) {
         for (let i = 0; i < 3; i++) {
-            const ACCOUNT_URL = `summoner/v4/summoners/${challenger[i].summonerId}?api_key=${process.env.API_KEY}`;
-            const userInfo = await (
-                await fetch(`${process.env.LOL_BASE_URL}${ACCOUNT_URL}`)
-            ).json();
-            challenger[i].profileIconId = userInfo.profileIconId;
-            challenger[i].summonerLevel = userInfo.summonerLevel;
+            ACCOUNT_URL.push(
+                `${process.env.LOL_BASE_URL}summoner/v4/summoners/${challenger[i].summonerId}?api_key=${process.env.API_KEY}`
+            );
+        }
+        ACCOUNT_URL = ACCOUNT_URL.map((url) => fetch(url));
+        const request = await Promise.all(ACCOUNT_URL);
+
+        for (let i = 0; i < request.length; i++) {
+            const addData = await request[i].json();
+            challenger[i].profileIconId = addData.profileIconId;
+            challenger[i].summonerLevel = addData.summonerLevel;
         }
     }
 

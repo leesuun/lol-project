@@ -1,0 +1,3 @@
+const ingame = {
+    item,
+};

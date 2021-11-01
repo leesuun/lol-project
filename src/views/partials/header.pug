@@ -21,10 +21,10 @@ header.screen__header
         //- i.fas.fa-cog.fa-lg
         if loggedIn
             div.user__profile
-                img(src=`https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/${userInfo.profileIconId}.png`)
+                img(src=`https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/${loggedInUserInfo.profileIconId}.png`)
                 div.user__info
-                    span=userInfo.name
-                    span="Level: "+userInfo.summonerLevel
+                    span=loggedInUserInfo.name
+                    span="Level: "+loggedInUserInfo.summonerLevel
                 a(href="/user/logout")  로그아웃
         else
             a(href="/login")    

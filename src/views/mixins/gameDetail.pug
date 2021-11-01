@@ -1,38 +1,40 @@
 mixin gameDetail(info)
-    li(style=`background:${info[0] === "승리" ? "#A3CFEC" : "#E2B6B3"}`)
+    li(style=`background:${info.basicSummoner.rate.win === "승리" ? "#A3CFEC" : "#E2B6B3"}`)
         .detatil__components
             .detatil__game__MetaData
-                h3.gameWin=info[0]
-                span.gameType=info[1]
-                span.gameDuration=Math.floor(info[2]/60)+"분 플레이"
-                span.gameDate=(new Date(info[3])).toISOString().slice(0,10)
+                h3.gameWin=info.basicSummoner.rate.win
+                span.gameType=info.gameInfo.gameType
+                span.gameDuration=Math.floor(info.gameInfo.duration/60)+"분 플레이"
+                span.gameDate=(new Date(info.gameInfo.gameCreation)).toISOString().slice(0,10)
             .detatil__user__ChampionInfo
-                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/champion/${info[4]}.png`, alt="").playChampImg
+                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/champion/${info.basicSummoner.champion}.png`, alt="").playChampImg
                 .spell
-                    img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/${info[15]}.png`, alt="")
-                    img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/${info[16]}.png`, alt="")
+                    img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/${info.basicSummoner.spells.first}.png`, alt="")
+                    img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/${info.basicSummoner.spells.second}.png`, alt="")
                     
         
             .detatil__user__WinRate
-                span.kill__death=info[12]+" / "+info[13]+" / "+info[14]
-                span.average="평점: "+((info[12]+info[14])/info[13]).toFixed(2)
+                span.kill__death=info.basicSummoner.rate.kills+" / "+info.basicSummoner.rate.deaths+" / "+info.basicSummoner.rate.assists
+                span.average="평점: "+((info.basicSummoner.rate.kills+info.basicSummoner.rate.assists)/info.basicSummoner.rate.deaths).toFixed(2)
             .detatil__user__Items
                 span.item__title 아이템
-                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info[5]}.png`, alt="")
-                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info[6]}.png`, alt="")
-                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info[7]}.png`, alt="")
-                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info[11]}.png`, alt="")
-                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info[9]}.png`, alt="")
-                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info[10]}.png`, alt="")
-                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info[8]}.png`, alt="")
+                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item0}.png`, alt="")
+                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item1}.png`, alt="")
+                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item2}.png`, alt="")
+                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.itemSub}.png`, alt="")
+                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item3}.png`, alt="")
+                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item4}.png`, alt="")
+                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item5}.png`, alt="")
             .detatil__user__Runes
                 span.run__title 룬
-                img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info[17]}`, alt="")
-                img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info[18]}`, alt="")
-                img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info[19]}`, alt="")
-                img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info[20]}`, alt="")
-                img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info[21]}`, alt="")
-                img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info[22]}`, alt="")
+                img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info.basicSummoner.runes.main.style}`, alt="")
+                img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info.basicSummoner.runes.main.rune1}`, alt="")
+                img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info.basicSummoner.runes.main.rune2}`, alt="")
+                img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info.basicSummoner.runes.main.rune3}`, alt="")
+                img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info.basicSummoner.runes.main.rune4}`, alt="")
+                img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info.basicSummoner.runes.sub.style}`, alt="")
+                img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info.basicSummoner.runes.sub.rune1}`, alt="")
+                img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info.basicSummoner.runes.sub.rune2}`, alt="")
                 
 
 
