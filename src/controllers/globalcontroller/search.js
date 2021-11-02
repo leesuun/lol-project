@@ -76,6 +76,8 @@ export const getSearch = async (req, res) => {
     // console.log(gameListInfo);
 
     let gameDetails = [];
+    team1 = [];
+    team2 = [];
 
     for (let i = 0; i < gameList.length; i++) {
         const gameInfo = gameListInfo[i].info;
@@ -280,19 +282,20 @@ export const postSearch = (req, res) => {
         body: { btnId },
     } = req;
 
-    const team = [];
+    const team = [[], []];
 
     for (let i = 0; i < team1.length; i++) {
         if (team1[i].gameInfo.matchId === btnId) {
-            team.push(team1[i]);
+            team[0].push(team1[i]);
         }
     }
     for (let i = 0; i < team2.length; i++) {
         if (team2[i].gameInfo.matchId === btnId) {
-            team.push(team2[i]);
+            team[1].push(team2[i]);
         }
     }
 
     res.send(team);
+
     // res.send(team2);
 };

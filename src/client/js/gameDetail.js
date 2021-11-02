@@ -12,21 +12,23 @@ const handleDetailClick = async (event) => {
             dataset: { id: btnId },
         },
     } = event;
+    let response;
 
     for (let i = 0; i < latestList.length; i++) {
         if (btnId === latestList[i].dataset.id) {
             showDetail(latestList[i]);
 
-            const response = await fetch(`/summoner/`, {
+            response = await fetch(`/summoner/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ btnId }),
             });
-            console.log(await response.json());
         }
     }
+    const teamList = await response.json();
+    console.log(teamList);
 };
 
 detailBtn.forEach((element) => {
