@@ -10,6 +10,7 @@ module.exports = {
         login: BASE_JS + "login.js",
         views: BASE_JS + "views.js",
         comment: BASE_JS + "comment.js",
+        gameDetail: BASE_JS + "gameDetail.js",
     },
 
     output: {

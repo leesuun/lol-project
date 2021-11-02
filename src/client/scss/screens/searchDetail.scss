@@ -1,0 +1,74 @@
+.latest__list {
+    .detail__table {
+        thead,
+        tbody,
+        tr,
+        td {
+            border: none;
+        }
+        thead {
+            text-align: left;
+
+            tr {
+                td {
+                    text-align: center;
+                }
+            }
+        }
+        .rune-spell {
+            display: flex;
+            justify-content: center;
+            gap: 0.3rem;
+            .runeStyle {
+                img {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+            .spell {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0.1rem;
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+        .championInfo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.3rem;
+            img {
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        .items {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+        .grade {
+            text-align: center;
+        }
+        .minionKills {
+            text-align: center;
+        }
+        .gold {
+            text-align: center;
+        }
+    }
+    .team1 {
+    }
+    .team2 {
+    }
+}

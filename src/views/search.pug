@@ -47,7 +47,7 @@ block content
                             .rank__metaData
                                 span.rank__tier=flexInfo.tier+" "+flexInfo.rank+" "
                                 span.rank__lp=flexInfo.leaguePoints+" LP"
-                            span.win__rate=flexInfo.wins+"승 "+flexInfo.losses+"패 "+Math.ceil(soloInfo.wins/(soloInfo.wins+soloInfo.losses)*100)+"%"
+                            span.win__rate=flexInfo.wins+"승 "+flexInfo.losses+"패 "+Math.ceil(flexInfo.wins/(flexInfo.wins+flexInfo.losses)*100)+"%"
 
                     else
                         .rankDivision.flexRank
@@ -68,6 +68,9 @@ block scripts
     script.
         const main = document.querySelector("main");
         main.style.width= "80%";
+    script(src="/assets/js/gameDetail.js") 
+     
+
 
 
 

@@ -2,11 +2,14 @@ import fetch from "node-fetch";
 
 import { QUEUETYPE, SPELL, RUNE } from "../../constants.js";
 
+let team1 = [];
+let team2 = [];
+
 export const getSearch = async (req, res) => {
     const {
         query: { username },
     } = req;
-    const GAME_LIST_COUNT = 15;
+    const GAME_LIST_COUNT = 10;
     const GAME_PARTICIPANTS_COUNT = 10;
     let MATCH_2_URL = [];
     let gameListInfo = [];
@@ -68,15 +71,17 @@ export const getSearch = async (req, res) => {
         gameListInfo.push(await request[i].json());
     }
 
+    // return res.send(gameListInfo);
+
     // console.log(gameListInfo);
 
-    // return res.send(gameListInfo);
     let gameDetails = [];
 
     for (let i = 0; i < gameList.length; i++) {
         const gameInfo = gameListInfo[i].info;
         for (let j = 0; j < GAME_PARTICIPANTS_COUNT; j++) {
             const participantsInfo = gameInfo.participants[j];
+
             if (participantsInfo.summonerName === userInfo.name) {
                 gameDetails.push({
                     gameInfo: {
@@ -84,13 +89,18 @@ export const getSearch = async (req, res) => {
                             QUEUETYPE[gameInfo.queueId]),
                         gameCreation: gameInfo.gameCreation,
                         duration: gameInfo.gameDuration,
+                        matchId: gameListInfo[i].metadata.matchId,
                     },
                     basicSummoner: {
-                        champion: participantsInfo.championName,
+                        champion:
+                            participantsInfo.championName === "FiddleSticks"
+                                ? "Fiddlesticks"
+                                : participantsInfo.championName,
                         spells: {
                             first: SPELL[participantsInfo.summoner1Id],
                             second: SPELL[participantsInfo.summoner2Id],
                         },
+
                         rate: {
                             win:
                                 participantsInfo.win === true ? "승리" : "패배",
@@ -144,19 +154,145 @@ export const getSearch = async (req, res) => {
                             },
                         },
                     },
-                    winParticipants: {},
-                    loseParticipants: {},
+                });
+            }
+
+            if (participantsInfo.teamId === 100) {
+                team1.push({
+                    gameInfo: {
+                        matchId: gameListInfo[i].metadata.matchId,
+                    },
+                    basicSummoner: {
+                        champion:
+                            participantsInfo.championName === "FiddleSticks"
+                                ? "Fiddlesticks"
+                                : participantsInfo.championName,
+                        champLevel: participantsInfo.champLevel,
+                        minionKills:
+                            participantsInfo.neutralMinionsKilled +
+                            participantsInfo.totalMinionsKilled,
+                        getGold: participantsInfo.goldEarned,
+
+                        spells: {
+                            first: SPELL[participantsInfo.summoner1Id],
+                            second: SPELL[participantsInfo.summoner2Id],
+                        },
+                        rate: {
+                            win:
+                                participantsInfo.win === true ? "승리" : "패배",
+                            kills: participantsInfo.kills,
+                            deaths: participantsInfo.deaths,
+                            assists: participantsInfo.assists,
+                        },
+                        items: {
+                            item0: participantsInfo.item0,
+                            item1: participantsInfo.item1,
+                            item2: participantsInfo.item2,
+                            item3: participantsInfo.item3,
+                            item4: participantsInfo.item4,
+                            item5: participantsInfo.item5,
+                            itemSub: participantsInfo.item6,
+                        },
+                        runes: {
+                            main: {
+                                style: RUNE[
+                                    participantsInfo.perks.styles[0].style
+                                ],
+                            },
+                            sub: {
+                                style: RUNE[
+                                    participantsInfo.perks.styles[1].style
+                                ],
+                            },
+                        },
+                    },
+                });
+            }
+            if (participantsInfo.teamId === 200) {
+                team2.push({
+                    gameInfo: {
+                        matchId: gameListInfo[i].metadata.matchId,
+                    },
+                    basicSummoner: {
+                        champion:
+                            participantsInfo.championName === "FiddleSticks"
+                                ? "Fiddlesticks"
+                                : participantsInfo.championName,
+                        champLevel: participantsInfo.champLevel,
+                        minionKills:
+                            participantsInfo.neutralMinionsKilled +
+                            participantsInfo.totalMinionsKilled,
+                        getGold: participantsInfo.goldEarned,
+                        spells: {
+                            first: SPELL[participantsInfo.summoner1Id],
+                            second: SPELL[participantsInfo.summoner2Id],
+                        },
+
+                        rate: {
+                            win:
+                                participantsInfo.win === true ? "승리" : "패배",
+                            kills: participantsInfo.kills,
+                            deaths: participantsInfo.deaths,
+                            assists: participantsInfo.assists,
+                        },
+                        items: {
+                            item0: participantsInfo.item0,
+                            item1: participantsInfo.item1,
+                            item2: participantsInfo.item2,
+                            item3: participantsInfo.item3,
+                            item4: participantsInfo.item4,
+                            item5: participantsInfo.item5,
+                            itemSub: participantsInfo.item6,
+                        },
+                        runes: {
+                            main: {
+                                style: RUNE[
+                                    participantsInfo.perks.styles[0].style
+                                ],
+                            },
+                            sub: {
+                                style: RUNE[
+                                    participantsInfo.perks.styles[1].style
+                                ],
+                            },
+                        },
+                    },
                 });
             }
         }
     }
 
-    // console.log(gameDetails);
+    // return res.send(team2);
     // return res.send(gameDetails);
 
-    return res.render("search", { userInfo, soloInfo, flexInfo, gameDetails });
+    // console.log(gameDetails);
+    // return res.send(flexInfo);
+
+    return res.render("search", {
+        userInfo,
+        soloInfo,
+        flexInfo,
+        gameDetails,
+    });
 };
 export const postSearch = (req, res) => {
-    console.log(req.body);
-    console.log(req.params);
+    const {
+        body: { btnId },
+    } = req;
+
+    const team = [];
+
+    for (let i = 0; i < team1.length; i++) {
+        if (team1[i].gameInfo.matchId === btnId) {
+            team.push(team1[i]);
+        }
+    }
+    for (let i = 0; i < team2.length; i++) {
+        if (team2[i].gameInfo.matchId === btnId) {
+            team.push(team2[i]);
+        }
+    }
+
+    res.send(team);
+    // res.send(team2);
 };
