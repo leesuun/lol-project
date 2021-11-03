@@ -1,5 +1,8 @@
 .latest__list {
     .detail__table {
+        border-radius: 1rem;
+        box-shadow: 3px 3px 3px 3px black;
+
         thead,
         tbody,
         tr,
@@ -12,6 +15,17 @@
             tr {
                 td {
                     text-align: center;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    &:nth-child(2) {
+                        display: flex;
+                        justify-content: left;
+                        margin-left: 3rem;
+                    }
                 }
             }
         }
@@ -71,4 +85,10 @@
     }
     .team2 {
     }
+}
+
+.division {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 1rem;
 }

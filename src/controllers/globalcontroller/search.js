@@ -94,6 +94,7 @@ export const getSearch = async (req, res) => {
                         matchId: gameListInfo[i].metadata.matchId,
                     },
                     basicSummoner: {
+                        summonerName: participantsInfo.summonerName,
                         champion:
                             participantsInfo.championName === "FiddleSticks"
                                 ? "Fiddlesticks"
@@ -165,6 +166,7 @@ export const getSearch = async (req, res) => {
                         matchId: gameListInfo[i].metadata.matchId,
                     },
                     basicSummoner: {
+                        summonerName: participantsInfo.summonerName,
                         champion:
                             participantsInfo.championName === "FiddleSticks"
                                 ? "Fiddlesticks"
@@ -216,6 +218,7 @@ export const getSearch = async (req, res) => {
                         matchId: gameListInfo[i].metadata.matchId,
                     },
                     basicSummoner: {
+                        summonerName: participantsInfo.summonerName,
                         champion:
                             participantsInfo.championName === "FiddleSticks"
                                 ? "Fiddlesticks"
@@ -265,7 +268,6 @@ export const getSearch = async (req, res) => {
     }
 
     // return res.send(team2);
-    // return res.send(gameDetails);
 
     // console.log(gameDetails);
     // return res.send(flexInfo);
