@@ -39,6 +39,7 @@ mixin gameDetail(info)
                 img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info.basicSummoner.runes.sub.rune1}`, alt="")
                 img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info.basicSummoner.runes.sub.rune2}`, alt="")
             button(data-id=info.gameInfo.matchId)#detailBtn.detail__users__btn.btn.btn-info.btn-sm 상세정보
+        hr
         table.table.detail__table.team1
             thead
                 tr
