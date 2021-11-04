@@ -28,7 +28,7 @@ export const getSearch = async (req, res) => {
 
     if ("status" in userInfo) {
         // 에러처리 필요
-        return res.redirect("/");
+        return res.render("404");
     }
 
     const RANKINFO_URL = `${process.env.LOL_BASE_URL}league/v4/entries/by-summoner/${userInfo.id}`;
