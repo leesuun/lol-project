@@ -24,13 +24,35 @@ mixin gameDetail(info)
                     span.average="평점: "+((info.basicSummoner.rate.kills+info.basicSummoner.rate.assists)/info.basicSummoner.rate.deaths).toFixed(2) 
             .detatil__user__Items
                 span.item__title 아이템
-                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item0}.png`, alt="")
-                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item1}.png`, alt="")
-                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item2}.png`, alt="")
-                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.itemSub}.png`, alt="")
-                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item3}.png`, alt="")
-                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item4}.png`, alt="")
-                img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item5}.png`, alt="")
+                if info.basicSummoner.items.item0 === 0
+                    .emptyItem
+                else
+                    img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item0}.png`, alt="")
+                if info.basicSummoner.items.item1 === 0
+                    .emptyItem 
+                else
+                    img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item1}.png`, alt="")
+                if info.basicSummoner.items.item2 === 0
+                    .emptyItem 
+                else
+                    img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item2}.png`, alt="")
+                if info.basicSummoner.items.itemSub === 0
+                    .emptyItem 
+                else
+                    img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.itemSub}.png`, alt="")
+                if info.basicSummoner.items.item3 === 0
+                    .emptyItem 
+                else
+                    img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item3}.png`, alt="")
+                if info.basicSummoner.items.item4 === 0
+                    .emptyItem 
+                else
+                    img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item4}.png`, alt="")
+                if info.basicSummoner.items.item5 === 0
+                    .emptyItem 
+                else
+                    img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item5}.png`, alt="")
+
             .detatil__user__Runes
                 span.run__title 룬
                 img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info.basicSummoner.runes.main.style}`, alt="")
@@ -42,216 +64,6 @@ mixin gameDetail(info)
                 img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info.basicSummoner.runes.sub.rune1}`, alt="")
                 img(src=`https://ddragon.leagueoflegends.com/cdn/img/${info.basicSummoner.runes.sub.rune2}`, alt="")
             button(data-id=info.gameInfo.matchId)#detailBtn.detail__users__btn.btn.btn-info.btn-sm 상세정보
-        //- hr
-        //- table.table.detail__table.team1
-        //-     thead
-        //-         tr
-        //-             td 룬스펠
-        //-             td 소환사 정보
-        //-             td 아이템
-        //-             td 킬뎃
-        //-             td 미니언킬
-        //-             td 개인 골드
-        //-     tbody
-        //-         tr
-        //-             td
-        //-                 .rune-spell
-        //-                     .runeStyle
-        //-                         img(src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7200_Domination.png", alt="")
-        //-                     .spell
-        //-                         img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/SummonerDot.png", alt="")
-        //-                         img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/SummonerDot.png", alt="")
-        //-             td
-        //-                 .championInfo                       
-        //-                     span.level 12
-        //-                     img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/champion/Teemo.png", alt="") 
-        //-                     span.summonerName 지노스프
-        //-             td
-        //-                 .items                        
-        //-                     img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item0}.png`, alt="")
-        //-                     img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item1}.png`, alt="")
-        //-                     img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item2}.png`, alt="")
-        //-                     img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.itemSub}.png`, alt="")
-        //-                     img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item3}.png`, alt="")
-        //-                     img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item4}.png`, alt="")
-        //-                     img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item5}.png`, alt="")                            
-        //-             td
-        //-                 .grade                       
-        //-                     span 2 / 7 / 9
-        //-             td
-        //-                 .minionKills                  
-        //-                     span 105
-        //-             td
-        //-                 .gold
-        //-                     span 20000
-
-        //- table.table.detail__table.team2.table-bordered
-            thead
-                tr
-                    td 룬스펠
-                    td 소환사 정보
-                    td 아이템
-                    td 킬뎃
-                    td 미니언킬
-                    td 개인 골드
-            tbody
-                tr
-                    td
-                        .rune-spell
-                            .runeStyle
-                                img(src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7200_Domination.png", alt="")
-                            .spell
-                                img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/SummonerDot.png", alt="")
-                                img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/SummonerDot.png", alt="")
-                    td
-                        .championInfo                       
-                            span.level 12
-                            img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/champion/Teemo.png", alt="") 
-                            span.summonerName 지노스프
-                    td
-                        .items                        
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item0}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item1}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item2}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.itemSub}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item3}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item4}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item5}.png`, alt="")                            
-                    td
-                        .grade                       
-                            span 2 / 7 / 9
-                    td
-                        .minionKills                  
-                            span 105
-                    td
-                        .gold
-                            span 20000
-                tr
-                    td
-                        .rune-spell
-                            .runeStyle
-                                img(src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7200_Domination.png", alt="")
-                            .spell
-                                img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/SummonerDot.png", alt="")
-                                img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/SummonerDot.png", alt="")
-                    td
-                        .championInfo                       
-                            span.level 12
-                            img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/champion/Teemo.png", alt="") 
-                            span.summonerName 지노스프
-                    td
-                        .items                        
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item0}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item1}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item2}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.itemSub}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item3}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item4}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item5}.png`, alt="")                            
-                    td
-                        .grade                       
-                            span 2 / 7 / 9
-                    td
-                        .minionKills                  
-                            span 105
-                    td
-                        .gold
-                            span 20000
-                tr
-                    td
-                        .rune-spell
-                            .runeStyle
-                                img(src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7200_Domination.png", alt="")
-                            .spell
-                                img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/SummonerDot.png", alt="")
-                                img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/SummonerDot.png", alt="")
-                    td
-                        .championInfo                       
-                            span.level 12
-                            img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/champion/Teemo.png", alt="") 
-                            span.summonerName 지노스프
-                    td
-                        .items                        
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item0}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item1}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item2}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.itemSub}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item3}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item4}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item5}.png`, alt="")                            
-                    td
-                        .grade                       
-                            span 2 / 7 / 9
-                    td
-                        .minionKills                  
-                            span 105
-                    td
-                        .gold
-                            span 20000
-                tr
-                    td
-                        .rune-spell
-                            .runeStyle
-                                img(src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7200_Domination.png", alt="")
-                            .spell
-                                img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/SummonerDot.png", alt="")
-                                img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/SummonerDot.png", alt="")
-                    td
-                        .championInfo                       
-                            span.level 12
-                            img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/champion/Teemo.png", alt="") 
-                            span.summonerName 지노스프
-                    td
-                        .items                        
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item0}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item1}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item2}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.itemSub}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item3}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item4}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item5}.png`, alt="")                            
-                    td
-                        .grade                       
-                            span 2 / 7 / 9
-                    td
-                        .minionKills                  
-                            span 105
-                    td
-                        .gold
-                            span 20000
-                tr
-                    td
-                        .rune-spell
-                            .runeStyle
-                                img(src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7200_Domination.png", alt="")
-                            .spell
-                                img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/SummonerDot.png", alt="")
-                                img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/spell/SummonerDot.png", alt="")
-                    td
-                        .championInfo                       
-                            span.level 12
-                            img(src="http://ddragon.leagueoflegends.com/cdn/11.21.1/img/champion/Teemo.png", alt="") 
-                            span.summonerName 지노스프
-                    td
-                        .items                        
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item0}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item1}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item2}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.itemSub}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item3}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item4}.png`, alt="")
-                            img(src=`http://ddragon.leagueoflegends.com/cdn/11.21.1/img/item/${info.basicSummoner.items.item5}.png`, alt="")                            
-                    td
-                        .grade                       
-                            span 2 / 7 / 9
-                    td
-                        .minionKills                  
-                            span 105
-                    td
-                        .gold
-                            span 20000
-        
-
 
 
         

@@ -9,7 +9,7 @@ export const getSearch = async (req, res) => {
     const {
         query: { username },
     } = req;
-    const GAME_LIST_COUNT = 10;
+    const GAME_LIST_COUNT = 15;
     const GAME_PARTICIPANTS_COUNT = 10;
     let MATCH_2_URL = [];
     let gameListInfo = [];
