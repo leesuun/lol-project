@@ -11,6 +11,7 @@ module.exports = {
         views: BASE_JS + "views.js",
         comment: BASE_JS + "comment.js",
         gameDetail: BASE_JS + "gameDetail.js",
+        wsServer: BASE_JS + "wsServer.js",
     },
 
     output: {

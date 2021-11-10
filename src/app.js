@@ -2,6 +2,8 @@ import express from "express";
 import session from "express-session";
 import morgan from "morgan";
 import MongoStore from "connect-mongo";
+import http from "http";
+import { Server, Socket } from "socket.io";
 
 import apiRouter from "./routers/apiRouter.js";
 import globalRouter from "./routers/globalRouter.js";
@@ -39,4 +41,13 @@ app.use("/user", userRouter);
 app.use("/board", boardRouter);
 app.use("/api", apiRouter);
 
-export default app;
+const httpServer = http.createServer(app);
+const wsServer = new Server(httpServer);
+
+wsServer.on("connection", (socket) => {
+    socket.emit("ferret", "tobi", (data) => {
+        console.log(data); // data will be "woot"
+    });
+});
+
+export default httpServer;
