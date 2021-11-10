@@ -11,7 +11,25 @@ block content
                 ul.lotation__list
                     each lotationImg in lotationImgs
                         +lotationImgs(lotationImg)
-            .content 실시간 채팅
+            .content
+                .chatting
+                    .chat__room
+                        .chat__screen
+                        form.chat__inputMsg
+                            input(type="text" placeholder="input a message.." required)
+                            button.btn.btn-info 전송
+                    .chat__set
+                        form.chat__nickname
+                            input(type="text" placeholder="nickname")
+                            button.btn.btn-info 선택
+                        form.chat__roomname
+                            input(type="text" placeholder="room name" required)
+                            button.btn.btn-info 입장
+                        .chat__roomInfo
+                            .info__roomname 입장 방: every Room
+                            .info__userCount 인원: 5명
+                    
+
             .content 게시판
 
 block scripts
