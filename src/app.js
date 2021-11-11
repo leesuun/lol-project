@@ -4,6 +4,7 @@ import morgan from "morgan";
 import MongoStore from "connect-mongo";
 import http from "http";
 import { Server, Socket } from "socket.io";
+import { instrument } from "@socket.io/admin-ui";
 
 import apiRouter from "./routers/apiRouter.js";
 import globalRouter from "./routers/globalRouter.js";
@@ -11,6 +12,7 @@ import userRouter from "./routers/userRouter.js";
 import boardRouter from "./routers/boardRouter.js";
 
 import { localMiddleware } from "./middleware.js";
+import { SocketAddress } from "net";
 
 const logger = morgan("dev");
 const app = express();
@@ -41,13 +43,91 @@ app.use("/user", userRouter);
 app.use("/board", boardRouter);
 app.use("/api", apiRouter);
 
+//socket code
+
 const httpServer = http.createServer(app);
-const wsServer = new Server(httpServer);
+
+const wsServer = new Server(httpServer, {
+    cors: {
+        origin: ["https://admin.socket.io"],
+        credentials: true,
+    },
+});
+
+instrument(wsServer, {
+    auth: false,
+});
+
+function publicRooms() {
+    const {
+        sockets: {
+            adapter: { rooms, sids },
+        },
+    } = wsServer;
+
+    const publicRooms = [];
+    rooms.forEach((_, key) => {
+        if (sids.get(key) === undefined) {
+            publicRooms.push(key);
+        }
+    });
+
+    return publicRooms;
+}
+
+function socketRoomsList(socket) {
+    const rooms = socket.adapter.rooms;
+    const sids = socket.adapter.sids;
+
+    const publicRooms = [];
+    rooms.forEach((_, key) => {
+        if (sids.get(key) === undefined) {
+            publicRooms.push(key);
+        }
+    });
+    publicRooms.forEach((room) => {
+        socket.leave(room);
+    });
+}
 
 wsServer.on("connection", (socket) => {
-    socket.emit("ferret", "tobi", (data) => {
-        console.log(data); // data will be "woot"
+    socket.onAny((event) => {
+        console.log(event);
     });
+
+    socket["nickname"] = "익명";
+
+    socket.on("nickname", (nickname) => {
+        socket["nickname"] = nickname;
+    });
+
+    socket.on("enter_room", (roomName, done) => {
+        socketRoomsList(socket);
+        socket.join(roomName);
+        done();
+        socket
+            .to(roomName)
+            .emit("welcome", `(${socket.nickname})님이 입장하셨습니다.`);
+    });
+
+    socket.on("new_message", (msg, roomName, done) => {
+        socket
+            .to(roomName)
+            .emit("new_message", `(${socket.nickname}) : ${msg}`);
+        done();
+    });
+
+    socket.on("disconnecting", () => {
+        socket.rooms.forEach((room) => {
+            socket
+                .to(room)
+                .emit("bye", `(${socket.nickname})님이 퇴장하셨습니다.`);
+        });
+    });
+
+    // socket.on("disconnect", () => {
+    //     wsServer.sockets.emit("room_change", publicRooms());
+    // });
 });
 
 export default httpServer;
