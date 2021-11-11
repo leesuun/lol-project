@@ -14,16 +14,18 @@ function addMessage(msg) {
     msgList.appendChild(li);
 }
 
-function handleMsgSubmit() {
-    inputMsgForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const input = inputMsgForm.querySelector("input");
-        const message = input.value;
-        socket.emit("new_message", input.value, roomName, () => {
-            addMessage(`You : ${message}`);
-        });
-        input.value = "";
+function handleMsgProcess(event) {
+    event.preventDefault();
+    const input = inputMsgForm.querySelector("input");
+    const message = input.value;
+    socket.emit("new_message", input.value, roomName, () => {
+        addMessage(`You : ${message}`);
     });
+    input.value = "";
+}
+
+function handleMsgSubmit() {
+    inputMsgForm.addEventListener("submit", handleMsgProcess);
 }
 
 function handleNickSubmit(event) {
@@ -39,6 +41,7 @@ function handleRoomSubmit(event) {
     event.preventDefault();
     const input = roomnameForm.querySelector("input");
     roomName = input.value;
+    inputMsgForm.removeEventListener("submit", handleMsgProcess);
     socket.emit("enter_room", input.value, handleMsgSubmit);
     input.value = "";
 }
