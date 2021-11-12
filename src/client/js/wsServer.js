@@ -4,6 +4,9 @@ const roomnameForm = document.getElementById("roomnameForm");
 const msgList = document.getElementById("msgList");
 const inputMsgForm = document.getElementById("inputMsg");
 const nicknameForm = document.getElementById("nicknameForm");
+const roomInfo = document.getElementById("roomInfo");
+
+const chatScreen = document.getElementById("chatScreen");
 
 let roomName;
 let joinCheck;
@@ -12,6 +15,13 @@ function addMessage(msg) {
     const li = document.createElement("li");
     li.innerText = msg;
     msgList.appendChild(li);
+    chatScreen.scrollTop = chatScreen.scrollHeight;
+}
+
+function roomCount(userCnt) {
+    const roomUserCnt = roomInfo.querySelector("#roomUser");
+
+    roomUserCnt.innerText = `입장 인원: ${userCnt}명`;
 }
 
 function handleMsgProcess(event) {
@@ -24,8 +34,13 @@ function handleMsgProcess(event) {
     input.value = "";
 }
 
-function handleMsgSubmit() {
+function handleJoinRoom(room, userCnt) {
     inputMsgForm.addEventListener("submit", handleMsgProcess);
+
+    const roomName = roomInfo.querySelector("#roomname");
+    roomName.innerText = `입장 방: ${room}`;
+
+    roomCount(userCnt);
 }
 
 function handleNickSubmit(event) {
@@ -41,19 +56,33 @@ function handleRoomSubmit(event) {
     event.preventDefault();
     const input = roomnameForm.querySelector("input");
     roomName = input.value;
+    //이벤트 중첩 방지
     inputMsgForm.removeEventListener("submit", handleMsgProcess);
-    socket.emit("enter_room", input.value, handleMsgSubmit);
+    socket.emit("enter_room", input.value, handleJoinRoom);
     input.value = "";
 }
 
-socket.on("welcome", (user) => {
+socket.on("welcome", (user, userCnt) => {
     addMessage(user);
+    roomCount(userCnt);
+});
+
+socket.on("bye", (user, userCnt) => {
+    addMessage(user);
+    roomCount(userCnt);
 });
 
 socket.on("new_message", addMessage);
 
-socket.on("bye", (user) => {
-    addMessage(user);
+socket.on("room_change", (rooms) => {
+    const roomList = document.querySelector("#roomList");
+    roomList.innerHTML = "";
+    if (rooms.length === 0) {
+        return;
+    }
+    rooms.forEach((room) => {
+        roomList.innerText = `방 리스트: [${rooms}]`;
+    });
 });
 
 function handleProtectSubmit(event) {

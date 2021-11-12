@@ -14,7 +14,7 @@ block content
             .content
                 .chatting
                     .chat__room
-                        .chat__screen(style="overflow-y:auto; ")
+                        #chatScreen.chat__screen(style="overflow:auto; ")
                             ul#msgList
                         form#inputMsg.chat__inputMsg
                             input(type="text" placeholder="input a message.." required)
@@ -26,10 +26,10 @@ block content
                         form#roomnameForm.chat__roomname
                             input(type="text" placeholder="room name" required)
                             button.btn.btn-info 입장
-                        .chat__roomInfo
-                            .info__roomname 방 리스트: asd zxc qwe asd
-                            .info__roomname 입장 방: every Room
-                            .info__userCount 인원: 5명
+                        #roomInfo.chat__roomInfo
+                            #roomname.info__roomname 입장 방:
+                            #roomUser.info__userCount 입장 인원:
+                            ul#roomList.info__roomname 방 리스트: 
                     
 
             .content 게시판

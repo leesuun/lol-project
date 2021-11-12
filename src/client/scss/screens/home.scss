@@ -58,12 +58,21 @@
 
     .chat__room {
         .chat__screen {
+            padding: 1rem;
             background-color: #dde8f0;
             border-top: 1px solid black;
             border-left: 1px solid black;
             border-right: 1px solid black;
             width: 600px;
             height: 400px;
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+                li {
+                }
+            }
         }
         .chat__inputMsg {
             position: relative;
@@ -95,7 +104,10 @@
         }
 
         .chat__roomInfo {
-            margin-top: 7rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 5rem;
         }
     }
 }
