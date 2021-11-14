@@ -67,7 +67,6 @@ export const RUNE = {
     8214: "perk-images/Styles/Sorcery/SummonAery/SummonAery.png",
     8224: "perk-images/Styles/Sorcery/NullifyingOrb/Pokeshield.png",
     8226: "perk-images/Styles/Sorcery/ManaflowBand/ManaflowBand.png",
-
     8229: "perk-images/Styles/Sorcery/ArcaneComet/ArcaneComet.png",
     8230: "perk-images/Styles/Sorcery/PhaseRush/PhaseRush.png",
     8232: "perk-images/Styles/Sorcery/Waterwalking/Waterwalking.png",
