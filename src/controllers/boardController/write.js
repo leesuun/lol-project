@@ -1,5 +1,5 @@
-import User from "../../models/User";
-import Post from "../../models/Post";
+import User from "../../models copy/User";
+import Post from "../../models copy/Post";
 
 export const getWrite = (req, res) => {
     return res.render("write-board");

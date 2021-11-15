@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import User from "../../models/User";
+import User from "../../models copy/User";
 import regex from "../../regex.js";
 
 export const getJoin = (req, res) => {
