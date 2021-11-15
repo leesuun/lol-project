@@ -1,6 +1,6 @@
 import Post from "../../models/Post.js";
 import User from "../../models/User.js";
-import Comment from "../../models/comment.js";
+import Comment from "../../models/Comment.js";
 
 export const getBoard = async (req, res) => {
     const page = Number(req.params.page);
