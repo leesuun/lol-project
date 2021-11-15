@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 _dotenv["default"].config();
 
-var PORT = 8080;
+var PORT = 7080;
 
 _app["default"].listen(PORT, function () {
   console.log("http server listening..\uD83D\uDE80 http://localhost:".concat(PORT));

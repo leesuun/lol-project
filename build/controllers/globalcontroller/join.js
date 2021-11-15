@@ -7,7 +7,7 @@ exports.inputNickname = exports.inputState = exports.postJoin = exports.getJoin 
 
 var _nodeFetch = _interopRequireDefault(require("node-fetch"));
 
-var _User = _interopRequireDefault(require("../../models/User.js"));
+var _User = _interopRequireDefault(require("../../models/User"));
 
 var _regex = _interopRequireDefault(require("../../regex.js"));
 

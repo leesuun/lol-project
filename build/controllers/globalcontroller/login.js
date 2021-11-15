@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.accountInfo = exports.postLogin = exports.getLogin = void 0;
 
-var _User = _interopRequireDefault(require("../../models/User.js"));
+var _User = _interopRequireDefault(require("../../models/User"));
 
 var _bcrypt = _interopRequireDefault(require("bcrypt"));
 

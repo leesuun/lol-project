@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.postWrite = exports.getWrite = void 0;
 
-var _User = _interopRequireDefault(require("../../models/User.js"));
+var _User = _interopRequireDefault(require("../../models/User"));
 
-var _Post = _interopRequireDefault(require("../../models/Post.js"));
+var _Post = _interopRequireDefault(require("../../models/Post"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

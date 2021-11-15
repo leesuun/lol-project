@@ -5,11 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.deleteComment = exports.createComment = exports.registerViews = exports.deletePosting = exports.seeWrite = exports.postSearch = exports.getBoard = void 0;
 
-var _Post = _interopRequireDefault(require("../../models/Post.js"));
+var _Post = _interopRequireDefault(require("../../models/Post"));
 
-var _User = _interopRequireDefault(require("../../models/User.js"));
+var _User = _interopRequireDefault(require("../../models/User"));
 
-var _Comment = _interopRequireDefault(require("../../models/Comment.js"));
+var _Comment = _interopRequireDefault(require("../../models/Comment"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
