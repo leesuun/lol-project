@@ -28,7 +28,7 @@ app.use(
         saveUninitialized: false,
         // cookie: { secure: true }, secure - 브라우저가 HTTPS를 통해서만 쿠키를 보내도록 합니다.
         store: MongoStore.create({
-            mongoUrl: "mongodb://127.0.0.1:27017/cfs",
+            mongoUrl: process.env.DB_URL,
         }),
     })
 );
