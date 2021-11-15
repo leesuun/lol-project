@@ -9,7 +9,7 @@ var _Post = _interopRequireDefault(require("../../models/Post.js"));
 
 var _User = _interopRequireDefault(require("../../models/User.js"));
 
-var _comment = _interopRequireDefault(require("../../models/comment.js"));
+var _Comment = _interopRequireDefault(require("../../models/Comment.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -291,7 +291,7 @@ var createComment = /*#__PURE__*/function () {
           case 7:
             user = _context6.sent;
             _context6.next = 10;
-            return _comment["default"].create({
+            return _Comment["default"].create({
               text: content,
               createAt: new Date(),
               nickname: user.userId,
@@ -337,7 +337,7 @@ var deleteComment = /*#__PURE__*/function () {
           case 0:
             commentid = req.body.commentid, _id = req.session.user._id;
             _context7.next = 3;
-            return _comment["default"].findById(commentid);
+            return _Comment["default"].findById(commentid);
 
           case 3:
             comment = _context7.sent;
@@ -355,7 +355,7 @@ var deleteComment = /*#__PURE__*/function () {
 
           case 9:
             _context7.next = 11;
-            return _comment["default"].findByIdAndDelete({
+            return _Comment["default"].findByIdAndDelete({
               _id: commentid
             });
 
