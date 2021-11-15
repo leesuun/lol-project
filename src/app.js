@@ -4,7 +4,6 @@ import morgan from "morgan";
 import MongoStore from "connect-mongo";
 import http from "http";
 import { Server, Socket } from "socket.io";
-import { instrument } from "@socket.io/admin-ui";
 
 import apiRouter from "./routers/apiRouter.js";
 import globalRouter from "./routers/globalRouter.js";
@@ -12,7 +11,6 @@ import userRouter from "./routers/userRouter.js";
 import boardRouter from "./routers/boardRouter.js";
 
 import { localMiddleware } from "./middleware.js";
-import { SocketAddress } from "net";
 
 const logger = morgan("dev");
 const app = express();
@@ -47,16 +45,7 @@ app.use("/api", apiRouter);
 
 const httpServer = http.createServer(app);
 
-const wsServer = new Server(httpServer, {
-    cors: {
-        origin: ["https://admin.socket.io"],
-        credentials: true,
-    },
-});
-
-instrument(wsServer, {
-    auth: false,
-});
+const wsServer = new Server(httpServer);
 
 function publicRooms() {
     const {

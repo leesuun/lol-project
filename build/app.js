@@ -17,8 +17,6 @@ var _http = _interopRequireDefault(require("http"));
 
 var _socket = require("socket.io");
 
-var _adminUi = require("@socket.io/admin-ui");
-
 var _apiRouter = _interopRequireDefault(require("./routers/apiRouter.js"));
 
 var _globalRouter = _interopRequireDefault(require("./routers/globalRouter.js"));
@@ -28,8 +26,6 @@ var _userRouter = _interopRequireDefault(require("./routers/userRouter.js"));
 var _boardRouter = _interopRequireDefault(require("./routers/boardRouter.js"));
 
 var _middleware = require("./middleware.js");
-
-var _net = require("net");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -61,15 +57,7 @@ app.use("/api", _apiRouter["default"]); //socket code
 
 var httpServer = _http["default"].createServer(app);
 
-var wsServer = new _socket.Server(httpServer, {
-  cors: {
-    origin: ["https://admin.socket.io"],
-    credentials: true
-  }
-});
-(0, _adminUi.instrument)(wsServer, {
-  auth: false
-});
+var wsServer = new _socket.Server(httpServer);
 
 function publicRooms() {
   var _wsServer$sockets$ada = wsServer.sockets.adapter,
