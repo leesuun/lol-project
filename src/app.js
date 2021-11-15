@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(logger);
 app.use(
     session({
-        secret: "keyboard cat",
+        secret: process.env.COOKIE_SECRET,
         resave: false,
         saveUninitialized: false,
         // cookie: { secure: true }, secure - 브라우저가 HTTPS를 통해서만 쿠키를 보내도록 합니다.
