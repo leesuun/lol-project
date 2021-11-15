@@ -1,3 +1,4 @@
+import "regenerator-runtime";
 import dotenv from "dotenv";
 import httpServer from "./app.js";
 import "./db.js";

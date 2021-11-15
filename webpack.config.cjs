@@ -19,13 +19,13 @@ module.exports = {
         filename: "js/[name].js",
         clean: true,
     },
-    watch: true,
+
     plugins: [
         new MiniCssExtractPlugin({
             filename: "css/styles.css",
         }),
     ],
-    mode: "development",
+
     module: {
         rules: [
             {
