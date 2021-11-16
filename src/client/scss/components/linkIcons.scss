@@ -1,0 +1,42 @@
+.icon__list {
+    position: absolute;
+    right: -6rem;
+    top: -0.7rem;
+}
+
+.list-row {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.icon__list li {
+    display: inline;
+}
+
+.icon__list i {
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.icon__list i:hover {
+    text-decoration: none;
+    opacity: 1;
+}
+
+.fa-github-square {
+    color: black;
+}
+
+.fa-app-store-ios {
+    color: tomato;
+}
+
+.fa-pinterest-square {
+    color: green;
+}
+
+.fa-instagram-square {
+    background: -webkit-linear-gradient(#fbcd6f, #de026e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

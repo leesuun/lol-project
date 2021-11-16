@@ -1,106 +1,102 @@
 .screen__header {
     display: flex;
-    position: fixed;
-    width: 100%;
-    top: 0px;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
     padding: 1.5rem;
-    background-color: #cad0d7;
-    background-color: #838b94;
+    background-color: #9da6b1;
     background-image: url(/img/back.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 10rem 0rem;
-
     z-index: 1;
-
-    .test {
-        display: flex;
-        gap: 2rem;
-        position: relative;
-    }
 
     nav {
         display: flex;
         justify-content: center;
-        position: absolute;
-        background-color: #333e51;
+        align-items: center;
         width: 100%;
-        gap: 0.5rem;
+        position: absolute;
         bottom: -1rem;
+        background-color: #333e51;
+        gap: 0.5rem;
         a {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 70px;
             height: 30px;
-
             color: white;
+            &:hover {
+                color: black;
+            }
         }
     }
-    .contents {
+
+    .header__contents {
         display: flex;
-        padding: 10px 5px;
-        margin: 0px 5px;
+        gap: 1.5rem;
         align-items: center;
-        justify-content: center;
+        position: relative;
 
         .main-logo {
             font-family: "Lobster", cursive;
             font-size: 2rem;
             color: #cfb26a;
             text-shadow: -1px 0 black, 0 1px black, 2px 0 black, 0 -2px black;
-            margin-right: 1.5rem;
         }
 
-        form {
+        .user-search {
             display: flex;
-            gap: 0px 10px;
-            justify-content: center;
+            padding: 10px 5px;
+            margin: 0px 5px;
             align-items: center;
+            justify-content: center;
 
-            input {
-                width: 250px;
-                height: 35px;
-                border: none;
-                border-radius: 5px;
+            .search__form {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 0px 10px;
+
+                .search__input {
+                    width: 400px;
+                    height: 35px;
+                    border: none;
+                    border-radius: 5px;
+                }
             }
         }
     }
-    .side__menu {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 0px 10px;
-        width: 240px;
-        // border: 1px solid black;
-        // margin-left: 1rem;
-        // width: 20%;
 
-        .user__profile {
+    .user-login {
+        width: 240px;
+
+        .user-profile {
             display: flex;
             justify-content: center;
             align-items: center;
 
-            .user__info {
-                display: flex;
-                gap: 3px;
-                flex-direction: column;
-            }
-            img {
+            .user-img {
                 width: 35px;
                 height: 35px;
                 margin-right: 5px;
                 border-radius: 50%;
             }
+            .user-info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+            }
 
-            span {
+            .user-info__span {
                 font-size: 0.8rem;
             }
 
-            a {
+            .logIn-control {
                 margin-left: 1rem;
             }
         }

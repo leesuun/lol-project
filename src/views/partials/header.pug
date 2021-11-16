@@ -8,26 +8,44 @@ header.screen__header
         a(href="#") 예정
         a(href="#") 예정
         a(href="#") 예정
-    div.test
-        div.contents
-            a(href="/")
-                span.main-logo CFS.GG
-            form(action="/summoner/")          
-                input(type="text" name="username").form-control
-                button(type="submit").btn.btn-default
+    div.header__contents
+        a(href="/")
+            span.main-logo CFS.GG
+        div.user-search
+            form.search__form(action="/summoner/")          
+                input.search__input(type="text" name="username")
+                button.btn.btn-default(type="submit")
                     i.fas.fa-search.fa-lg
-                button(type="submit").btn.btn-default
+                button.btn.btn-default(type="submit")
                     i.fas.fa-microphone.fa-lg        
-        div.side__menu
+        div.user-login
             if loggedIn
-                div.user__profile
-                    img(src=`${process.env.LOL_CDN_URL}img/profileicon/${loggedInUserInfo.profileIconId}.png`)
-                    div.user__info
-                        span
+                div.user-profile
+                    img.user-img(src=`${process.env.LOL_CDN_URL}img/profileicon/${loggedInUserInfo.profileIconId}.png`)
+                    div.user-info
+                        span.user-info__span.user-nickname
                             strong=loggedInUserInfo.name
-                        span
+                        span.user-info__span.user-level
                             small="Level: "+loggedInUserInfo.summonerLevel
-                    a(href="/user/logout") 로그아웃
+                    a.logIn-control(href="/user/logout") 로그아웃
             else
-                a(href="/login") 로그인                        
-                a(href="/join") 회원가입                  
+                a.logIn-control(href="/login") 로그인                        
+                a.logIn-control(href="/join") 회원가입
+        ul.icon__list
+            .list-row
+                a(href='https://github.com/leesuun/lol-project' target='_blank')
+                    li.icons
+                        i.fab.fa-github-square.fa-2x
+                a(href='https://www.facebook.com/' target='_blank')
+                    li.icons
+                        i.fab.fa-facebook-square.fa-2x
+                a(href='https://www.instagram.com/' target='_blank')
+                    li.icons
+                        i.fab.fa-instagram-square.fa-2x
+            .list-row
+                a(href='#')
+                    li.icons
+                        i.fab.fa-app-store-ios.fa-2x
+                a(href='#')
+                    li.icons
+                        i.fab.fa-pinterest-square.fa-2x                  
