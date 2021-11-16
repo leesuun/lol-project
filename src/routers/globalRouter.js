@@ -23,4 +23,10 @@ globalRouter
     .post(postLogin);
 globalRouter.get("/ranking/page=:page", ranking);
 
+const riotAuth = (req, res) => {
+    return res.render("riotAuth");
+};
+
+globalRouter.get("/riot.txt", riotAuth);
+
 export default globalRouter;
