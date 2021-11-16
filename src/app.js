@@ -35,6 +35,7 @@ app.use(
 
 app.use(localMiddleware);
 app.use("/assets", express.static("assets"));
+app.use("/img", express.static("img"));
 app.use("/src/resource/webapp/ckeditor", express.static("ckeditor"));
 app.use("/", globalRouter);
 app.use("/user", userRouter);

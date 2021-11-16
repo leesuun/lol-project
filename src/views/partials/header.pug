@@ -1,33 +1,33 @@
 header.screen__header
-    nav.nav    
-        a(href="/") 
-            span Home
-        a(href="/ranking/page=1") 
-            span Ranking
-        a(href="#") 
-            span Game
-        a(href="/board/page=1") 
-            span Board
-    div.contents
-        form(action="/summoner/")
+    div(style="width:200px;height:50px;")
+    nav.nav           
+        a(href="/") 홈
+        a(href="/ranking/page=1") 랭킹
+        a(href="/board/page=1") 게시판
+        a(href="#") 예정 
+        a(href="#") 예정
+        a(href="#") 예정
+        a(href="#") 예정
+    div.test
+        div.contents
             a(href="/")
                 span.main-logo CFS.GG
-            input(type="text" name="username").form-control
-            button(type="submit").btn.btn-default
-                i.fas.fa-search.fa-lg
-            button(type="submit").btn.btn-default
-                i.fas.fa-microphone.fa-lg        
-    div.side__menu
-        //- i.fas.fa-cog.fa-lg
-        if loggedIn
-            div.user__profile
-                img(src=`https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/${loggedInUserInfo.profileIconId}.png`)
-                div.user__info
-                    span=loggedInUserInfo.name
-                    span="Level: "+loggedInUserInfo.summonerLevel
-                a(href="/user/logout")  로그아웃
-        else
-            a(href="/login")    
-                span 로그인
-            a(href="/join") 
-                span 회원가입
+            form(action="/summoner/")          
+                input(type="text" name="username").form-control
+                button(type="submit").btn.btn-default
+                    i.fas.fa-search.fa-lg
+                button(type="submit").btn.btn-default
+                    i.fas.fa-microphone.fa-lg        
+        div.side__menu
+            if loggedIn
+                div.user__profile
+                    img(src=`${process.env.LOL_CDN_URL}img/profileicon/${loggedInUserInfo.profileIconId}.png`)
+                    div.user__info
+                        span
+                            strong=loggedInUserInfo.name
+                        span
+                            small="Level: "+loggedInUserInfo.summonerLevel
+                    a(href="/user/logout") 로그아웃
+            else
+                a(href="/login") 로그인                        
+                a(href="/join") 회원가입                  
