@@ -1,6 +1,6 @@
 import "dotenv/config";
-import httpServer from "./app.js";
 import "regenerator-runtime";
+import httpServer from "./app.js";
 import "./db.js";
 
 // dotenv.config();
