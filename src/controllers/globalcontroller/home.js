@@ -1,5 +1,4 @@
 import fetch from "node-fetch";
-
 async function getLotation() {
     const LOTATION_URL = `platform/v3/champion-rotations?api_key=${process.env.API_KEY}`;
     const ALLCHAMPION_URL = `${process.env.LOL_CDN_URL}data/en_US/champion.json`;

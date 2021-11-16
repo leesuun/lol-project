@@ -1,9 +1,9 @@
-import "regenerator-runtime";
-import dotenv from "dotenv";
+import "dotenv/config";
 import httpServer from "./app.js";
+import "regenerator-runtime";
 import "./db.js";
 
-dotenv.config();
+// dotenv.config();
 const PORT = process.env.PORT || 7080;
 
 httpServer.listen(PORT, () => {
