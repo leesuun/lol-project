@@ -3,22 +3,22 @@ extends base/layout
 include ./mixins/comment
 
 block content
-    .seeBoard__wrapper
-        header.see__header
+    .see-posting__wrapper
+        header.posting__header
             if String(loggedInUser._id) === String(posting.owner)
-                menu
+                menu.posting__menu
                     a(href=`/board/${posting._id}/delete`) 글삭제
                     a(href="#") 글수정               
-            h2=posting.title
-            .see__info
-                .see__author
-                    img(src=`https://ddragon.leagueoflegends.com/cdn/11.19.1/img/profileicon/${posting.profileIconId}.png`, alt="")
-                    span=posting.author
-                .see__meta
-                    span.createAt #{posting.createAt.toISOString().slice(0,10)}
-                    span.commentCnt="댓글: "+posting.comments.length
-                    span.viewsCnt="조회수: "+posting.views 
-        .content
+            h2.posting-title=posting.title
+            .posting-info
+                .posting-author
+                    img.author-profile__img(src=`${process.env.LOL_CDN_URL}img/profileicon/${posting.profileIconId}.png`, alt="")
+                    span.author-nickname=posting.author
+                .posting-meta
+                    span.posting-createAt #{posting.createAt.toISOString().slice(0,10)}
+                    span.posting-commentCnt="댓글: "+posting.comments.length
+                    span.posting-viewsCnt="조회수: "+posting.views 
+        .posting-content
             p#content #{posting.contents}
             script.
                 const content = document.getElementById("content")
@@ -26,16 +26,16 @@ block content
                 const doc = new DOMParser().parseFromString(contentText, "text/html");
                 content.innerHTML = doc.body.innerHTML
                 
-        .comment#comment(data-id=posting._id)
-            header
-                h3 댓글
+        .posting-comment#comment(data-id=posting._id)
+            header.comment__header
+                h3.comment__title 댓글
             if loggedIn
-                .write__comment
-                    form#commentForm(method="POST")
-                        textarea#commentText(name="comment", rows="3")
-                        button(type="submit")#commentRegisterBtn.btn.btn-primary 등록
+                .write-comment
+                    form.write-comment__form#commentForm(method="POST")
+                        textarea.write-comment__textarea#commentText(name="comment", rows="3")
+                        button.write-comment__resistorBtn(type="submit")#commentRegisterBtn.btn.btn-primary 등록
             if (posting.comments.length >= 0)
-                .see__comment           
+                .see-comment           
                     ul#commentList.comment__list
                         each comment in posting.comments
                             +comments(comment)

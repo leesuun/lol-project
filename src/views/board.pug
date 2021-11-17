@@ -1,17 +1,17 @@
 extends base/layout
 
-include ./mixins/boardContents
+include ./mixins/postings
 
 block content
     .board__wrapper
-        form#boardForm(method="POST" action=`/board/search/page=${Number(page)}`)
+        form#boardForm.board__form(method="POST" action=`/board/search/page=${Number(page)}`)
             input(type="text" name="keyword" )
-            div
+            div.board-option
                 button(name="New").new-sort__btn.btn.btn-info 최신글
                 button(name="Popular").popul-sort__btn.btn.btn-info 인기글
-        table.table.table-hover
-            thead 
-                tr.success
+        table.board__table.table.table-hover
+            thead.table__thead 
+                tr
                     td 번호
                     td 제목
                     td 작성자
@@ -20,14 +20,14 @@ block content
             if (postings.length > 0)
                 each posting in postings
                     +postings(posting)
-        div#pageController.board__page
+        div#pageController.board-page
             if (page > 1)
                 a(href=`/board/page=${Number(page)-1}`)
                     button#previousBtn.btn.btn-info.pre__btn 이전
             a(href=`/board/page=${Number(page)+1}`)
                 button#nextBtn.btn.btn-info.next__btn 다음
             if loggedIn
-                a(href="/board/write").write__post 
+                a(href="/board/write").write-post 
                     button.btn.btn-info 글쓰기
 block scripts
     script(src="/assets/js/views.js")

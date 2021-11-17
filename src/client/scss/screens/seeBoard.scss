@@ -1,15 +1,16 @@
-.seeBoard__wrapper {
+.see-posting__wrapper {
+    width: 1000px;
     margin-top: $main-top;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 1rem;
     padding: 1rem;
 
-    .see__header {
+    .posting__header {
         border-bottom: 1px solid rgba(0, 0, 0, 0.3);
         margin-bottom: 1rem;
         position: relative;
 
-        menu {
+        .posting__menu {
             display: flex;
             gap: 0.3rem;
             position: absolute;
@@ -19,62 +20,60 @@
                 font-size: 0.8rem;
             }
         }
-        h2 {
+        .posting-title {
             text-align: center;
         }
-        .see__info {
+        .posting-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
 
-            .see__author {
+            .posting-author {
                 display: flex;
                 align-items: center;
-                img {
+                .author-profile__img {
                     width: 30px;
                     height: 30px;
                     border-radius: 50%;
                 }
-                span {
+                .author-nickname {
                     margin-left: 5px;
                 }
             }
-            .see__meta {
+            .posting-meta {
                 span {
                     margin-right: 1rem;
-
-                    &:nth-child(1) {
-                        font-size: 0.9rem;
-                        color: gray;
-                    }
+                }
+                .posting-createAt {
+                    font-size: 0.9rem;
+                    color: gray;
                 }
             }
         }
     }
 
-    .content {
+    .posting-content {
         margin-bottom: 1rem;
         padding: 1rem 0 10rem 0;
         border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     }
 
-    .comment {
-        header {
-            h3 {
+    .posting-comment {
+        .comment__header {
+            .comment__title {
                 margin-bottom: 2rem;
             }
         }
 
-        .write__comment {
+        .write-comment {
             display: flex;
             margin-bottom: 3rem;
-
-            form {
+            .write-comment__form {
                 width: 100%;
                 display: flex;
 
-                textarea {
+                .write-comment__textarea {
                     border: none;
                     padding: 0.3rem;
                     width: 80%;
@@ -83,22 +82,22 @@
                         outline: none;
                     }
                 }
-                button {
+                .write-comment__resistorBtn {
                     margin-left: 1rem;
                 }
             }
         }
-        .see__comment {
+        .see-comment {
             li {
                 display: flex;
                 justify-content: space-between;
 
-                .comment__info {
+                .comment-info {
                     display: flex;
                     gap: 1rem;
                     width: 100%;
 
-                    .comment__author {
+                    .comment-author-createAt {
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -107,12 +106,12 @@
                         flex-direction: column;
                         gap: 0.5rem;
 
-                        .createAt {
+                        .comment-createAt {
                             font-size: 0.7rem;
                             color: gray;
                         }
                     }
-                    .comment__text {
+                    .comment-text {
                         width: 70%;
                     }
                     .comment__menu {

@@ -1,31 +1,25 @@
 .board__wrapper {
     display: flex;
-
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 1000px;
     margin-top: $main-top;
     padding: 1rem;
     position: relative;
 
-    form {
+    .board__form {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: right;
         margin-bottom: 1rem;
 
-        div {
+        .board-option {
             margin-left: 1rem;
             .new-sort__btn {
                 margin-right: 3px;
             }
-        }
-    }
-
-    thead {
-        tr {
-            text-align: center;
         }
     }
 
@@ -37,22 +31,22 @@
                 border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             }
         }
-        .number,
-        .author,
-        .createAt,
-        .views {
+    }
+    .posting__mixin {
+        td {
             font-size: 0.95rem;
         }
-        .createAt {
+
+        .posting__mixin-createAt {
             color: gray;
         }
     }
 
-    .board__page {
-        .write__post {
+    .board-page {
+        .write-post {
             position: absolute;
             right: 1rem;
-            bottom: 1rem;
+            bottom: 18px;
         }
     }
 }

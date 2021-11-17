@@ -1,10 +1,10 @@
 mixin comments(info)
     li
-        .comment__info
-            .comment__author
-                span.author=info.nickname
-                span.createAt #{info.createAt.toISOString().slice(0,10)}
-            .comment__text
+        .comment-info
+            .comment-author-createAt
+                span.comment-author=info.nickname
+                span.comment-createAt #{info.createAt.toISOString().slice(0,10)}
+            .comment-text
                 p=info.text
             // 작성자 검증 필요 
             if String(loggedInUser._id) === String(info.owner)

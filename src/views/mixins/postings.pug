@@ -1,0 +1,8 @@
+mixin postings(info)
+    tbody.posting__mixin
+        tr#postsInfo(onclick=`location.href="/board/${info._id}/see"` data-id=info._id style="cursor:pointer") 
+            td.posting__mixin-number=info.number  
+            td.posting__mixin-title=info.title
+            td.posting__mixin-author=info.author
+            td.posting__mixin-createAt #{info.createAt.toISOString().slice(0,10)}
+            td.posting__mixin-views=info.views
