@@ -1,5 +1,6 @@
 .account__wrapper {
     margin-top: $main-top;
+    width: 1000px;
 
     h1 {
         text-align: center;
@@ -33,9 +34,7 @@
 
     .container.signin {
         p {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            text-align: center;
 
             a {
                 padding: 0px 5px;

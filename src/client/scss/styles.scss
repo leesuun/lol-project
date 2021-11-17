@@ -19,12 +19,9 @@
 @import "screens/searchDetail.scss";
 
 body {
-    // height: 100vh;
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
         "Lucida Sans", Arial, sans-serif;
     background-color: #dde8f0;
-    display: flex;
-    justify-content: center;
 }
 
 html {
@@ -34,6 +31,8 @@ html {
 }
 
 main {
-    width: 60%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
     margin-bottom: 10rem;
 }
