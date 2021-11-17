@@ -20,7 +20,7 @@
         width: 100%;
         position: absolute;
         bottom: -1rem;
-        background-color: #333e51;
+        background-color: black;
         gap: 0.5rem;
         a {
             display: flex;
@@ -30,7 +30,7 @@
             height: 30px;
             color: white;
             &:hover {
-                color: black;
+                color: #cfb26a;
             }
         }
     }

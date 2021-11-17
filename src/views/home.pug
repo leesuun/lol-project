@@ -3,42 +3,41 @@ extends base/layout
 include ./mixins/lotation
 
 block content 
-    .home__wrapper
+    .home-wrapper
         .contents
-            .content
+            section.section.section__lotation
                 header.lotation__header
-                    h5#lotationTime
+                    h5#lotationPeriod
                 ul.lotation__list
                     each lotationImg in lotationImgs
                         +lotationImgs(lotationImg)
-            .content
-                .chatting
-                    .chat__room
-                        #chatScreen.chat__screen(style="overflow:auto; ")
-                            ul#msgList
-                        form#inputMsg.chat__inputMsg
-                            input(type="text" placeholder="input a message.." required)
-                            button.btn.btn-info 전송
-                    .chat__set
-                        form#nicknameForm.chat__nickname
-                            input(type="text" placeholder="nickname")
-                            button.btn.btn-info 선택
-                        form#roomnameForm.chat__roomname
-                            input(type="text" placeholder="room name" required)
-                            button.btn.btn-info 입장
-                        #roomInfo.chat__roomInfo
-                            #roomname.info__roomname 입장 방:
-                            #roomUser.info__userCount 입장 인원:
-                            ul#roomList.info__roomname 방 리스트: 
+            section.section.section__chat        
+                .chat-room
+                    #chatScreen.chat__screen(style="overflow:auto; ")
+                        ul#msgList
+                    form#inputMsg.chat__inputMsg
+                        input(type="text" placeholder="input a message.." required)
+                        button.btn.btn-info 전송
+                .chat-set
+                    form#nicknameForm.chat__nickname
+                        input(type="text" placeholder="nickname")
+                        button.btn.btn-info 선택
+                    form#roomnameForm.chat__roomname
+                        input(type="text" placeholder="room name" required)
+                        button.btn.btn-info 입장
+                    #roomInfo.chat__roomInfo
+                        #roomname.info__roomname 입장 방:
+                        #roomUser.info__userCount 입장 인원:
+                        ul#roomList.info__roomname 방 리스트: 
                     
 
-            .content 게시판
+            section.section.section__board 게시판
 
 block scripts
     script(src="/socket.io/socket.io.js")
     script(src="/assets/js/wsServer.js")  
     script.
-        const lotationTime = document.getElementById("lotationTime");
+        const lotationPeriod = document.getElementById("lotationPeriod");
         function getMonday(d) {
             d = new Date(d);
             const day = d.getDay();
@@ -49,5 +48,5 @@ block scripts
         const finishDay = new Date(refDay.getTime() + 518400000);
 
         const lotationCycle = "로테이션 챔피언 (" + refDay.toISOString().slice(0,10) + " ~ " + finishDay.toISOString().slice(0,10) + ")";
-        lotationTime.innerText = lotationCycle;
+        lotationPeriod.innerText = lotationCycle;
         
