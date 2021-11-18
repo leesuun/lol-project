@@ -20,8 +20,6 @@ export const postLogin = async (req, res) => {
 
     await user.save();
 
-    console.log(user);
-
     const ACCOUNT_URL = `summoner/v4/summoners/by-account/${user.accountId}?api_key=${process.env.API_KEY}`;
     const userInfo = await (
         await fetch(`${process.env.LOL_BASE_URL}${ACCOUNT_URL}`)
@@ -30,7 +28,6 @@ export const postLogin = async (req, res) => {
     req.session.loggedIn = true;
     req.session.user = user;
     req.session.userInfo = userInfo;
-    // console.log(req.session);
 
     return res.redirect("/");
 };

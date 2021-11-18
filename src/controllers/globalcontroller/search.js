@@ -6,7 +6,6 @@ let team1 = [];
 let team2 = [];
 
 export const getSearch = async (req, res) => {
-    console.log("..");
     const {
         query: { username },
     } = req;

@@ -5,7 +5,6 @@ const msgList = document.getElementById("msgList");
 const inputMsgForm = document.getElementById("inputMsg");
 const nicknameForm = document.getElementById("nicknameForm");
 const roomInfo = document.getElementById("roomInfo");
-
 const chatScreen = document.getElementById("chatScreen");
 
 let roomName;
@@ -29,7 +28,7 @@ function handleMsgProcess(event) {
     const input = inputMsgForm.querySelector("input");
     const message = input.value;
     socket.emit("new_message", input.value, roomName, () => {
-        addMessage(`You : ${message}`);
+        addMessage(`나 : ${message}`);
     });
     input.value = "";
 }
@@ -48,8 +47,6 @@ function handleNickSubmit(event) {
     const input = nicknameForm.querySelector("input");
     const nickname = input.value;
     socket.emit("nickname", nickname);
-
-    input.value = "";
 }
 
 function handleRoomSubmit(event) {
