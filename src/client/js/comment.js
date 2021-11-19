@@ -4,8 +4,6 @@ const commentText = document.getElementById("commentText");
 const commentList = document.getElementById("commentList");
 const deleteBtn = document.querySelectorAll("#deleteBtn");
 
-console.log(deleteBtn);
-
 let owner = null;
 let time = null;
 let newCommentId = null;

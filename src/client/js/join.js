@@ -6,6 +6,9 @@ const statePass = form.querySelector("#statePass");
 const password2 = form.querySelector("#password2");
 const statePass2 = form.querySelector("#statePass2");
 const nickname = form.querySelector("#nickname");
+const stateNickname = form.querySelector("#stateNickname");
+
+userId.focus();
 
 const ok = {
     id: false,
@@ -19,8 +22,6 @@ let inputPass = "";
 let inputNickname = "";
 let accountData = "";
 
-userId.focus();
-
 function inputError(state, element, stateMsg) {
     if (!state) {
         element.classList.add("red");
@@ -32,87 +33,103 @@ function inputError(state, element, stateMsg) {
     element.innerText = stateMsg;
 }
 
-const handleIdBlur = async (event) => {
-    inputId = userId.value;
-
-    const response = await fetch("/api/join", {
-        method: "POST",
+async function stateCheck(fetchObj, msgElement) {
+    const response = await fetch(fetchObj.url, {
+        method: fetchObj.type,
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-            userId: inputId !== "" ? inputId : "blank",
-        }),
+        body: JSON.stringify(fetchObj.body),
     });
 
     if (response.status === 200) {
         const state = await response.json();
-        console.log(state);
-        ok.id = state.ok;
-        inputError(ok.id, stateId, state.msg);
+
+        switch (fetchObj.value) {
+            case "id": {
+                ok.id = state.ok;
+                break;
+            }
+            case "password": {
+                ok.password = state.ok;
+                break;
+            }
+            case "password2": {
+                ok.password2 = state.ok;
+                break;
+            }
+            case "nickname": {
+                ok.nickname = state.state.ok;
+                accountData = state.accountData;
+                break;
+            }
+        }
+        if (fetchObj.value === "nickname") {
+            inputError(state.state.ok, msgElement, state.state.msg);
+        } else {
+            inputError(state.ok, msgElement, state.msg);
+        }
     }
+
+    return response;
+}
+
+const handleIdBlur = async (event) => {
+    inputId = userId.value;
+
+    const fetchObj = {
+        url: "/api/join",
+        type: "POST",
+        body: { userId: inputId !== "" ? inputId : "#####" },
+        value: "id",
+    };
+
+    await stateCheck(fetchObj, stateId);
 };
 
 const handlePassBlur = async (event) => {
     inputPass = password.value;
 
-    const response = await fetch("/api/join", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
+    const fetchObj = {
+        url: "/api/join",
+        type: "POST",
+        body: {
+            password: inputPass !== "" ? inputPass : "#####",
         },
-        body: JSON.stringify({
-            password: inputPass !== "" ? inputPass : "blank",
-        }),
-    });
-
-    if (response.status === 200) {
-        const state = await response.json();
-        ok.password = state.ok;
-        inputError(ok.password, statePass, state.msg);
-    }
+        value: "password",
+    };
+    await stateCheck(fetchObj, statePass);
 };
 
 const handlePass2Blur = async (evnet) => {
     inputPass = password.value;
     const inputPass2 = password2.value;
 
-    const response = await fetch("/api/join", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            password2: inputPass2 !== "" ? inputPass2 : "blank",
+    const fetchObj = {
+        url: "/api/join",
+        type: "POST",
+        body: {
+            password2: inputPass2 !== "" ? inputPass2 : "#####",
             password: inputPass,
-        }),
-    });
+        },
+        value: "password2",
+    };
 
-    if (response.status === 200) {
-        const state = await response.json();
-        ok.password2 = state.ok;
-        inputError(ok.password2, statePass2, state.msg);
-    }
+    await stateCheck(fetchObj, statePass2);
 };
 
 const handleNicknameBlur = async (event) => {
     inputNickname = nickname.value;
 
-    const response = await fetch("/api/join/nickname", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
+    const fetchObj = {
+        url: "/api/join/nickname",
+        type: "POST",
+        body: {
+            nickname: inputNickname !== "" ? inputNickname : "#####",
         },
-        body: JSON.stringify({
-            nickname: inputNickname !== "" ? inputNickname : "!@#$",
-        }),
-    });
-
-    if (response.status === 200) {
-        accountData = await response.json();
-        ok.nickname = accountData.state.ok;
-        inputError(ok.nickname, stateNickname, accountData.state.msg);
-    }
+        value: "nickname",
+    };
+    await stateCheck(fetchObj, stateNickname);
 };
 
 const handleSubmit = async (event) => {
@@ -125,7 +142,6 @@ const handleSubmit = async (event) => {
         event.preventDefault();
         alert("입력 정보를 확인해 주세요.");
     } else {
-        console.log(accountData);
         await fetch("/join", {
             method: "POST",
             headers: {
@@ -135,7 +151,7 @@ const handleSubmit = async (event) => {
                 statusCheck: "ok",
                 userId: inputId,
                 password: inputPass,
-                accountData: accountData.accountData,
+                accountData,
             }),
         });
     }

@@ -1,11 +1,15 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require("webpack");
+
+require("dotenv").config();
 
 const BASE_JS = "/src/client/js/";
 
 module.exports = {
     entry: {
         main: BASE_JS + "main.js",
+        home: BASE_JS + "home.js",
         join: BASE_JS + "join.js",
         login: BASE_JS + "login.js",
         views: BASE_JS + "views.js",
@@ -21,6 +25,9 @@ module.exports = {
     },
 
     plugins: [
+        new webpack.DefinePlugin({
+            API_KEY: JSON.stringify(process.env.API_KEY),
+        }),
         new MiniCssExtractPlugin({
             filename: "css/styles.css",
         }),

@@ -10,10 +10,11 @@ export const postJoin = async (req, res) => {
     const {
         body: { userId, password, accountData, statusCheck },
     } = req;
+    console.log(accountData);
 
     if (statusCheck) {
         try {
-            const user = await User.create({
+            await User.create({
                 userId,
                 password,
                 summonerId: accountData.id,
@@ -40,11 +41,12 @@ export const inputState = async (req, res) => {
     };
 
     const user = await User.findOne({ userId });
+
     if (userId) {
         state.ok = false;
         if (user) {
             state.msg = "이미 사용중이거나 탈퇴한 아이디입니다.";
-        } else if (userId === "blank") {
+        } else if (userId === "#####") {
             state.msg = "필수 입력 항목입니다.";
         } else if (!regex.userid.test(userId)) {
             state.msg = "6~15자 영문,숫자가 포함되어야 합니다.";
@@ -56,7 +58,7 @@ export const inputState = async (req, res) => {
 
     if (password) {
         state.ok = false;
-        if (password === "blank") {
+        if (password === "#####") {
             state.msg = "필수 입력 항목입니다.";
         } else if (!regex.password.test(password)) {
             state.msg = "6~20자 영문, 숫자 또는 특수문자가 포함되어야 합니다.";
@@ -68,7 +70,7 @@ export const inputState = async (req, res) => {
 
     if (password2) {
         state.ok = false;
-        if (password2 === "blank") {
+        if (password2 === "#####") {
             state.msg = "필수 입력 항목입니다.";
         } else if (password !== password2) {
             state.msg = "일치하지 않는 비밀번호입니다.";
@@ -96,7 +98,7 @@ export const inputNickname = async (req, res) => {
 
     if (nickname) {
         state.ok = false;
-        if (nickname === "!@#$") {
+        if (nickname === "#####") {
             state.msg = "필수 입력 항목입니다.";
         } else if (accountData.status) {
             state.msg = "존재하지 않는 소환사 입니다.";
