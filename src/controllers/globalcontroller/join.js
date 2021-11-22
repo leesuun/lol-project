@@ -10,7 +10,6 @@ export const postJoin = async (req, res) => {
     const {
         body: { userId, password, accountData, statusCheck },
     } = req;
-    console.log(accountData);
 
     if (statusCheck) {
         try {

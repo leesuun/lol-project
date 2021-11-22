@@ -1,6 +1,6 @@
 const contents = document.querySelector("#lotationPeriod");
 
-async function test() {
+async function getLotation() {
     const LOTATION_URL = `platform/v3/champion-rotations?api_key=${API_KEY}`;
     const ALLCHAMPION_URL = `https://ddragon.leagueoflegends.com/cdn/11.19.1/data/en_US/champion.json`;
 
@@ -29,14 +29,11 @@ async function test() {
 
     lotationImg.sort();
 
-    const img = document.createElement("img");
-    img.src = lotationImg[0];
-
-    for (let i = 0; i < 33; i++) {
-        contents.appendChild(img);
-    }
-
-    // console.log(lotationImg);
+    await fetch("/api/getLotation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lotationImg }),
+    });
 }
 
-test();
+getLotation();

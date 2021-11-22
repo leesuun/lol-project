@@ -4,6 +4,7 @@ import { home } from "../controllers/globalcontroller/home.js";
 import { getJoin, postJoin } from "../controllers/globalcontroller/join.js";
 import { getLogin, postLogin } from "../controllers/globalcontroller/login.js";
 import { ranking } from "../controllers/globalcontroller/ranking.js";
+
 import {
     getSearch,
     postSearch,

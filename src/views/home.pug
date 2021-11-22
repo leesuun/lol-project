@@ -8,9 +8,9 @@ block content
             section.section.section__lotation
                 header.lotation__header
                     h5#lotationPeriod
-                //- ul.lotation__list
-                //-     each lotationImg in lotationImgs
-                //-         +lotationImgs(lotationImg)
+                ul.lotation__list
+                    each lotationImg in lotationImgs
+                        +lotationImgs(lotationImg)
             section.section.section__chat        
                 .chat-room
                     #chatScreen.chat__screen(style="overflow:auto; ")
@@ -31,12 +31,12 @@ block content
                         ul#roomList.info__roomname 방 리스트: 
                     
 
-            section.section.section__board 게시판
+            //- section.section.section__board 게시판
 
 block scripts
     script(src="/socket.io/socket.io.js")
     script(src="/assets/js/wsServer.js")
-    script(src="/assets/js/home.js")   
+    script(async src="/assets/js/home.js")   
     script.
         const lotationPeriod = document.getElementById("lotationPeriod");
         function getMonday(d) {
